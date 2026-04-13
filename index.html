@@ -3,860 +3,389 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Paul Daley — Resúmenes & Takeaways</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>Esau Bonilla — Mis Páginas</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink: #0d0d0d;
-    --paper: #f5f0e8;
-    --cream: #ede8dc;
-    --accent: #c0392b;
-    --gold: #b8860b;
-    --muted: #6b6560;
-    --border: #d0c8b8;
-    --card-bg: #faf7f2;
+    --bg: #0a0a0a;
+    --surface: #111111;
+    --border: #1e1e1e;
+    --accent: #e8ff47;
+    --text: #f0f0f0;
+    --muted: #555;
+    --card-hover: #161616;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
+    background: var(--bg);
+    color: var(--text);
     font-family: 'DM Sans', sans-serif;
-    background: var(--paper);
-    color: var(--ink);
     min-height: 100vh;
   }
 
-  /* HERO */
-  .hero {
-    background: var(--ink);
-    color: var(--paper);
-    padding: 80px 40px 60px;
+  /* HEADER */
+  header {
+    padding: 60px 48px 0;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 64px;
+    display: block;
+  }
+
+  .hero-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -2px;
+    margin-bottom: 20px;
+  }
+
+  .hero-title span {
+    color: var(--muted);
+  }
+
+  .hero-desc {
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 440px;
+    margin-bottom: 48px;
+  }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .meta-count {
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--accent);
+  }
+
+  .meta-label {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  .meta-divider {
+    width: 1px;
+    height: 36px;
+    background: var(--border);
+  }
+
+  /* SEARCH */
+  .search-wrap {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 32px 48px;
+  }
+
+  .search-input {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 20px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .search-input:focus { border-color: var(--accent); }
+  .search-input::placeholder { color: var(--muted); }
+
+  /* GRID */
+  .grid-section {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 48px 80px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+
+  .pages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px;
+  }
+
+  /* CARD */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    text-decoration: none;
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: background 0.2s, border-color 0.2s, transform 0.15s;
     position: relative;
     overflow: hidden;
   }
-  .hero::before {
+
+  .card::before {
     content: '';
     position: absolute;
-    top: -40px; right: -40px;
-    width: 300px; height: 300px;
-    border: 2px solid rgba(255,255,255,0.07);
-    border-radius: 50%;
-  }
-  .hero::after {
-    content: '';
-    position: absolute;
-    bottom: -60px; left: 10%;
-    width: 200px; height: 200px;
-    border: 1px solid rgba(255,255,255,0.05);
-    border-radius: 50%;
-  }
-  .hero-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
-  .hero-label {
-    font-size: 11px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--accent);
-    font-weight: 600;
-    margin-bottom: 20px;
-    display: block;
-  }
-  .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.4rem, 6vw, 4.5rem);
-    font-weight: 900;
-    line-height: 1.05;
-    margin-bottom: 24px;
-  }
-  .hero h1 em {
-    font-style: italic;
-    color: #d4a853;
-  }
-  .hero-desc {
-    font-size: 1rem;
-    line-height: 1.7;
-    color: rgba(245,240,232,0.65);
-    max-width: 560px;
-    margin-bottom: 40px;
-  }
-  .hero-stats {
-    display: flex;
-    gap: 40px;
-    flex-wrap: wrap;
-  }
-  .stat-item { display: flex; flex-direction: column; gap: 4px; }
-  .stat-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 2rem;
-    font-weight: 700;
-    color: #d4a853;
-  }
-  .stat-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,240,232,0.5); }
-
-  /* TOC */
-  .toc-section {
-    background: var(--cream);
-    border-bottom: 1px solid var(--border);
-    padding: 40px;
-  }
-  .toc-inner { max-width: 900px; margin: 0 auto; }
-  .toc-title {
-    font-size: 11px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 20px;
-    font-weight: 600;
-  }
-  .toc-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 8px;
-  }
-  .toc-link {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 12px;
-    border-radius: 6px;
-    text-decoration: none;
-    color: var(--ink);
-    font-size: 0.82rem;
-    font-weight: 500;
-    transition: background 0.2s;
-  }
-  .toc-link:hover { background: rgba(0,0,0,0.06); }
-  .toc-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 0.75rem;
-    color: var(--accent);
-    min-width: 22px;
-    font-weight: 700;
-  }
-
-  /* MAIN */
-  .main { max-width: 900px; margin: 0 auto; padding: 60px 40px; }
-
-  /* CHAPTER CARD */
-  .chapter {
-    margin-bottom: 64px;
-    padding-bottom: 64px;
-    border-bottom: 1px solid var(--border);
-    animation: fadeUp 0.5s ease both;
-  }
-  .chapter:last-child { border-bottom: none; }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .chapter-header { display: flex; align-items: flex-start; gap: 20px; margin-bottom: 24px; }
-  .chapter-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 3rem;
-    font-weight: 900;
-    color: var(--border);
-    line-height: 1;
-    min-width: 56px;
-    text-align: right;
-  }
-  .chapter-meta { flex: 1; }
-  .chapter-tag {
-    display: inline-block;
-    font-size: 10px;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    font-weight: 600;
-    color: var(--accent);
-    margin-bottom: 8px;
-  }
-  .chapter-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.6rem;
-    font-weight: 700;
-    line-height: 1.25;
-    color: var(--ink);
-    margin-bottom: 6px;
-  }
-  .chapter-subtitle {
-    font-size: 0.82rem;
-    color: var(--muted);
-    letter-spacing: 0.3px;
-  }
-
-  .chapter-body { padding-left: 76px; }
-
-  .summary-label {
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    font-weight: 700;
-    color: var(--muted);
-    margin-bottom: 12px;
-    display: block;
-  }
-  .summary-text {
-    font-size: 0.95rem;
-    line-height: 1.8;
-    color: #2a2a2a;
-    margin-bottom: 32px;
-  }
-
-  .takeaways-box {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--accent);
-    border-radius: 0 10px 10px 0;
-    padding: 24px 28px;
-  }
-  .takeaways-title {
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    font-weight: 700;
-    color: var(--accent);
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .takeaways-title::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
-  .takeaway-item {
-    display: flex;
-    gap: 14px;
-    margin-bottom: 12px;
-    font-size: 0.88rem;
-    line-height: 1.65;
-    color: #2a2a2a;
-  }
-  .takeaway-item:last-child { margin-bottom: 0; }
-  .takeaway-bullet {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
+    top: 0; left: 0; right: 0;
+    height: 2px;
     background: var(--accent);
-    margin-top: 7px;
-    flex-shrink: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease;
+  }
+
+  .card:hover {
+    background: var(--card-hover);
+    border-color: #2a2a2a;
+    transform: translateY(-2px);
+  }
+
+  .card:hover::before { transform: scaleX(1); }
+
+  .card-tag {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .card-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .card-desc {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 4px;
+  }
+
+  .card-date {
+    font-size: 11px;
+    color: #333;
+  }
+
+  .card-arrow {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .card:hover .card-arrow {
+    background: var(--accent);
+    color: #000;
+  }
+
+  /* ADD NEW CARD */
+  .card-add {
+    border-style: dashed;
+    border-color: #1e1e1e;
+    background: transparent;
+    align-items: center;
+    justify-content: center;
+    min-height: 160px;
+    cursor: default;
+    color: var(--muted);
+  }
+
+  .card-add:hover {
+    border-color: #333;
+    background: transparent;
+    transform: none;
+  }
+
+  .card-add::before { display: none; }
+
+  .add-icon {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+    color: #2a2a2a;
+  }
+
+  .add-text {
+    font-size: 0.8rem;
+    text-align: center;
+    line-height: 1.5;
   }
 
   /* FOOTER */
   footer {
-    background: var(--ink);
-    color: rgba(245,240,232,0.4);
-    text-align: center;
-    padding: 40px;
-    font-size: 0.8rem;
-    letter-spacing: 1px;
-  }
-  footer strong { color: rgba(245,240,232,0.8); }
-
-  /* SEARCH BAR */
-  .search-wrap {
-    max-width: 900px;
+    border-top: 1px solid var(--border);
+    padding: 24px 48px;
+    max-width: 1000px;
     margin: 0 auto;
-    padding: 0 40px;
-    position: relative;
-    top: -24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: var(--muted);
   }
-  .search-input {
-    width: 100%;
-    padding: 16px 24px;
-    border: none;
-    border-radius: 12px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
-    font-family: 'DM Sans', sans-serif;
+
+  /* EMPTY STATE */
+  .empty {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--muted);
     font-size: 0.9rem;
-    background: white;
-    color: var(--ink);
-    outline: none;
+    display: none;
   }
-  .search-input::placeholder { color: var(--muted); }
 
   @media (max-width: 640px) {
-    .hero { padding: 60px 24px 48px; }
-    .toc-section, .main { padding: 32px 24px; }
-    .chapter-body { padding-left: 0; }
-    .hero-stats { gap: 24px; }
-    .chapter-num { font-size: 2rem; min-width: 40px; }
-    .search-wrap { padding: 0 24px; }
+    header, .search-wrap, .grid-section, footer { padding-left: 24px; padding-right: 24px; }
+    .hero-title { font-size: 2.4rem; }
+    .pages-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
 
-<header class="hero">
-  <div class="hero-inner">
-    <span class="hero-label">Infoproductor · Emprendedor · CEO</span>
-    <h1>Paul Daley<br><em>Resúmenes & Takeaways</em></h1>
-    <p class="hero-desc">Todos los episodios destilados en sus ideas clave. Conocimiento accionable para infoproductores y emprendedores que quieren crecer con claridad y propósito.</p>
-    <div class="hero-stats">
-      <div class="stat-item">
-        <span class="stat-num">39</span>
-        <span class="stat-label">Capítulos</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-num">∞</span>
-        <span class="stat-label">Valor entregado</span>
-      </div>
+<header>
+  <span class="logo">EB · Páginas</span>
+  <h1 class="hero-title">Mis<br><span>Recursos</span></h1>
+  <p class="hero-desc">Todas las páginas generadas con IA, organizadas en un solo lugar. Conocimiento accionable para crecer como emprendedor e infoproductor.</p>
+  <div class="hero-meta">
+    <div>
+      <div class="meta-count" id="pageCount">1</div>
+      <div class="meta-label">Páginas<br>publicadas</div>
+    </div>
+    <div class="meta-divider"></div>
+    <div>
+      <div class="meta-count" style="font-size:1.3rem; color: var(--muted);">∞</div>
+      <div class="meta-label">Valor<br>entregado</div>
     </div>
   </div>
 </header>
 
 <div class="search-wrap">
-  <input class="search-input" id="searchBox" type="text" placeholder="🔍  Busca un tema: ventas, marketing, contratación, precios..." oninput="filterChapters(this.value)" />
+  <input
+    class="search-input"
+    id="searchBox"
+    type="text"
+    placeholder="🔍  Busca una página..."
+    oninput="filterCards(this.value)"
+  />
 </div>
 
-<nav class="toc-section">
-  <div class="toc-inner">
-    <p class="toc-title">Índice de Capítulos</p>
-    <div class="toc-grid" id="tocGrid">
-      <!-- populated by JS -->
-    </div>
-  </div>
-</nav>
+<section class="grid-section">
+  <p class="section-label">Todas las páginas</p>
 
-<main class="main" id="chaptersContainer">
-</main>
+  <div class="pages-grid" id="pagesGrid">
+
+    <!-- ===================== -->
+    <!--  AGREGA TUS PÁGINAS   -->
+    <!--  AQUÍ ABAJO           -->
+    <!-- ===================== -->
+
+    <a href="/paul-daley" class="card" data-search="paul daley transcripts resúmenes takeaways ventas marketing infoproductor">
+      <span class="card-tag">Resúmenes & Takeaways</span>
+      <div class="card-title">Paul Daley — Todos los Transcripts</div>
+      <p class="card-desc">39 episodios destilados en resúmenes y takeaways accionables para infoproductores y emprendedores.</p>
+      <div class="card-footer">
+        <span class="card-date">Abril 2026</span>
+        <div class="card-arrow">→</div>
+      </div>
+    </a>
+
+    <!-- EJEMPLO DE CÓMO AGREGAR UNA NUEVA PÁGINA:
+
+    <a href="/nombre-del-archivo" class="card" data-search="palabras clave para buscar">
+      <span class="card-tag">Categoría</span>
+      <div class="card-title">Título de la página</div>
+      <p class="card-desc">Descripción corta de qué contiene esta página.</p>
+      <div class="card-footer">
+        <span class="card-date">Mes Año</span>
+        <div class="card-arrow">→</div>
+      </div>
+    </a>
+
+    -->
+
+    <!-- Tarjeta de "próximamente" -->
+    <div class="card card-add">
+      <div class="add-icon">＋</div>
+      <p class="add-text">Próxima página<br><span style="font-size:10px; opacity:0.5">Sube un nuevo HTML al repo</span></p>
+    </div>
+
+  </div>
+
+  <p class="empty" id="emptyState">No se encontraron páginas con ese término.</p>
+</section>
 
 <footer>
-  Basado en los <strong>Transcripts de Paul Daley</strong> · Compilado para infoproductores y emprendedores
+  <span>Esau Bonilla · Recursos personales</span>
+  <span id="footerCount"></span>
 </footer>
 
 <script>
-const chapters = [
-  {
-    tag: "Oferta & Garantías",
-    title: "$100M Offers: The Key Step Everyone Misses",
-    subtitle: "Cómo estructurar garantías que convierten sin arruinar tu negocio",
-    summary: "Paul explica que la mayoría de emprendedores online no sabe estructurar bien sus garantías. Existen tres tipos: (1) devolución sin preguntas, (2) devolución condicional (stipulation), y (3) trabajar gratis. Para infoproductos, la garantía más efectiva hoy es una devolución simple en 7–14 días, ya que las garantías de 'trabajar gratis' han perdido credibilidad en el mercado. Para agencias, recomienda las garantías condicionales, protegiendo el negocio de clientes que no hacen su parte. La clave es diferenciar claramente el modelo de infoproducto (sin costo de entrega) del modelo de servicio (con overhead real).",
-    takeaways: [
-      "Las garantías de 'trabajar gratis' ya no funcionan igual que antes: el mercado las ve como humo.",
-      "Para tu infoproducto: ofrece una garantía simple de 7 a 14 días, sin condiciones. Reduce la fricción y el riesgo percibido del cliente.",
-      "Para agencias o servicios: usa garantías condicionales que protejan tu negocio. El cliente también debe cumplir su parte.",
-      "Una garantía bien construida es una herramienta de ventas, no solo una política de reembolso.",
-      "No vendas lo que no puedes entregar: sé honesto con lo que ofreces o perderás dinero y reputación."
-    ]
-  },
-  {
-    tag: "Equipo & Estructura",
-    title: "Las 3 Personas que Todo Negocio Necesita",
-    subtitle: "El triángulo invisible que decide si un negocio vive o muere",
-    summary: "Todo negocio requiere tres roles fundamentales: alguien que genere atención (audiencia/tráfico), alguien que convierta esa atención en clientes (ventas y marketing), y alguien que opere el negocio (administración, finanzas, legal, entrega). Paul reconoce que estuvo intentando hacer los tres solo, lo que lo llevó al estancamiento. La solución fue delegar operaciones a su COO Justin, copywriting a una agencia, y automatizaciones a un equipo externo, liberando su tiempo para crear contenido y generar tráfico.",
-    takeaways: [
-      "Identifica cuál de los 3 roles estás tratando de hacer tú solo y delega los otros cuanto antes.",
-      "El cuello de botella más común en infoproductores: están atrapados en operaciones cuando deberían generar eyeballs.",
-      "Contratar agencias externas para automatizaciones o copywriting puede ser más rentable que hacerlo internamente al principio.",
-      "La confusión entre 'hacer más' y 'delegar más' es el error más común de los fundadores solos.",
-      "Construye el equipo con claridad de roles antes de escalar: sin eso, crecer solo aumenta el caos."
-    ]
-  },
-  {
-    tag: "Mentalidad & Fe",
-    title: "Una Lección Bíblica de 3,400 Años para los Negocios",
-    subtitle: "La historia de Jericó y por qué el éxito puede destruirte",
-    summary: "Paul toma la historia bíblica de Israel conquistando Jericó (solo posible por la gracia de Dios) versus su derrota posterior en Ai (por soberbia). Cuando Israel ganó en Jericó, lo atribuyeron a Dios. Cuando fueron a Ai con confianza propia, fueron humillados. La aplicación al negocio: cuando empiezas sin dinero, rezas y buscas ayuda con humildad. Cuando empiezas a ganar, es fácil creer que el éxito es tuyo. Esa soberbia es exactamente lo que te lleva al fracaso. Los negocios que realmente crecen mantienen la humildad que tenían cuando estaban empezando.",
-    takeaways: [
-      "El peligro más grande del éxito es creer que lo lograste solo. La humildad que tenías al empezar es lo que te llevó hasta aquí.",
-      "Cuando todo va bien es el momento más importante para ser agradecido y no bajar la guardia.",
-      "Los emprendedores exitosos que caen rápido tienen algo en común: dejaron de hacer lo que funcionó al principio.",
-      "Revisa periódicamente: ¿sigues siendo tan cuidadoso, hambriento y humilde como cuando no tenías nada?",
-      "El éxito no es tuyo para quedártelo: úsalo para servir a otros y construir algo con propósito mayor."
-    ]
-  },
-  {
-    tag: "Mentalidad & Paciencia",
-    title: "El Rasgo que Comparten Todos mis Amigos Ricos",
-    subtitle: "Por qué la gratificación instantánea destruye a la mayoría de emprendedores",
-    summary: "Paul observa que todos sus amigos con grandes negocios comparten una característica: estuvieron dispuestos a trabajar años sin ver resultados visibles. No necesitaban validación inmediata porque tenían una confianza profunda en su dirección. La epidemia del 'fake it till you make it' en el espacio online es síntoma de inseguridad, no de éxito. Los emprendedores que duran años sin ver retorno y siguen firmes son los que eventualmente logran algo real. La diferencia entre quien triunfa y quien no es la capacidad de retrasar la gratificación.",
-    takeaways: [
-      "Los primeros 1–3 años de un negocio real casi siempre son invisibles económicamente. Eso es normal, no una señal de fracaso.",
-      "La necesidad de validación inmediata (likes, ingresos, reconocimiento) es el síntoma más claro de inseguridad, no de ambición.",
-      "Construye con perspectiva de 5–10 años. Los resultados de hoy son la semilla de lo que cosecharás en 2–3 años.",
-      "No compares tu año 1 con el año 7 de alguien más. Esa comparación es la que mata a la mayoría.",
-      "La autenticidad en tu marketing construye algo que el 'fake it till you make it' nunca puede: reputación real."
-    ]
-  },
-  {
-    tag: "Marca & Propósito",
-    title: "Sé la Luz de tu Industria",
-    subtitle: "Por qué tu negocio debe ser un faro, no solo una fuente de ingresos",
-    summary: "Paul reflexiona sobre ser 'la luz del mundo' (Mateo 5) como principio de negocio, no solo espiritual. Un infoproductor o emprendedor que actúa con integridad, honestidad y genuino deseo de entregar valor es literalmente la luz de una industria llena de oscuridad (gurus falsos, promesas vacías, marketing engañoso). Uno de los valores centrales de su empresa es precisamente 'ser la luz'. Esto se aplica en cómo manejas clientes, cómo hablas de tu producto, cómo tratas a tu equipo.",
-    takeaways: [
-      "En una industria llena de promesas vacías, ser genuinamente honesto y útil es la ventaja competitiva más poderosa.",
-      "Tu marca personal es el reflejo directo de tus valores. Si tus valores son sólidos, tu marca también lo será.",
-      "La integridad en el marketing (no inflar resultados, no mentir sobre ingresos) es lo que construye longevidad.",
-      "Define valores de empresa explícitos y vívelos. No como decoración de misión, sino como criterio de decisión diario.",
-      "Pregúntate: ¿estoy cubriendo mi luz (mi potencial real) por miedo al juicio ajeno o por buscar aprobación superficial?"
-    ]
-  },
-  {
-    tag: "Estrategia & Velocidad",
-    title: "Blitzkrieg Business: La Estrategia Brutal que Construye Imperios",
-    subtitle: "Por qué los más lentos siempre pierden y los más veloces siempre ganan",
-    summary: "Paul construye un framework estratégico usando analogías militares: los Titanes del mundo de los negocios operan con consciencia situacional total, velocidad de ejecución brutal y equipos de élite. Tres pilares: (1) Consciencia total del mercado (saber todo antes que tus competidores), (2) Velocidad como arma (blitzkrieg: hit fast, hit hard, no dar tiempo de reacción), y (3) Poder a través de personas (nadie construye un imperio solo). Usa casos como Bezos destruyendo Diapers.com, Steve Jobs comprimiendo timelines imposibles, y Julius Caesar cruzando el Rubicón con información privilegiada.",
-    takeaways: [
-      "Configura alertas de Google para tu nombre y el de tus competidores hoy mismo. La información temprana es ventaja real.",
-      "Corta tus timelines a la mitad y luego a la mitad otra vez. La mayoría de los delays son límites mentales, no reales.",
-      "Haz reuniones específicas semanales por área: flujo de caja, pipeline de ventas, movimientos de competencia.",
-      "Si tardas más de 24 horas en tomar decisiones reversibles, ya eres demasiado lento.",
-      "Nunca construyas solo: identifica los 2–3 roles de élite que multiplican tu impacto y enfócate en reclutarlos.",
-      "Lanza antes de estar listo. Los billonarios iteran en público; los emprendedores comunes perfeccionan en privado."
-    ]
-  },
-  {
-    tag: "Contratación",
-    title: "Lecciones de Contratación después de $60M Generados",
-    subtitle: "El sistema que filtra el 95% de candidatos malos automáticamente",
-    summary: "Paul comparte su técnica de contratación usada en empresas de alto nivel. El proceso está diseñado para generar atención hacia la vacante (igual que generas atención hacia tu oferta), convertir esa atención en aplicaciones (liquidar como en ventas) y luego gestionar el onboarding como se retiene a un cliente. El secreto está en usar un proceso selectivo y deliberado que identifique científicamente a los A-players, que son quienes prosperan bajo expectativas claras y presión. Esto construye lealtad porque los mejores valorarán un proceso serio.",
-    takeaways: [
-      "Contrata como vendes: genera atención, convierte en aplicaciones, y retén con un onboarding excepcional.",
-      "Un proceso de selección riguroso elimina al 95% de malos candidatos antes de gastar tiempo en entrevistas.",
-      "Los A-players no huyen de procesos difíciles: los buscan. Un proceso exigente es una señal de empresa seria.",
-      "Documenta expectativas por escrito y comunícalas verbalmente en el onboarding. Sin ambas, no hay expectativa real.",
-      "Invierte en el proceso de contratación ahora: el costo de una mala contratación es 3–5 veces su salario."
-    ]
-  },
-  {
-    tag: "Marketing & Sistemas",
-    title: "Cómo las Empresas de $1M/mes Hacen Menos Ventas y Más Marketing",
-    subtitle: "El Barómetro de Marketing: por qué tus ventas son un síntoma, no la causa",
-    summary: "Paul introduce el 'barómetro de marketing': una escala de 0 a 100 que mide cuánto confianza/convicción lleva el prospecto cuando llega a una llamada de ventas. Las empresas que dependen del 90% de sus ventas (closers) para cerrar son frágiles e imposibles de escalar. Las empresas de 8 cifras llenan el barómetro al 80% con marketing antes de la llamada. El resultado: tasas de show de 90–94%, closings casi automáticos y menos dependencia de talento de ventas difícil de encontrar. Si tu equipo de ventas tiene demasiado poder sobre tus resultados, tu marketing está fallando.",
-    takeaways: [
-      "Hazte esta pregunta: si tuvieras que cerrar ventas sin llamadas ni closers, ¿cómo lo harías? Ese ejercicio define tu estrategia de marketing.",
-      "Tu VSL (Video Sales Letter) es la herramienta #1 para pre-cerrar prospectos antes de hablar con ellos.",
-      "Una mejora del 10–15% en tu tasa de show (que llegan a la llamada) tiene más impacto que mejorar tu tasa de cierre.",
-      "Escalar marketing sistemas es infinitamente más poderoso que escalar personas de ventas.",
-      "Si un buen closer puede salvar o hundir tu negocio, tienes un problema de marketing, no de ventas."
-    ]
-  },
-  {
-    tag: "Física de Negocios",
-    title: "Cómo la Física del Bachillerato Construye Negocios Millonarios",
-    subtitle: "Las Leyes de la Termodinámica aplicadas a tu empresa",
-    summary: "Paul aplica las tres leyes de la termodinámica al mundo de los negocios. Ley 1 (Conservación de energía): la atención en el mercado no se crea, se transforma. Cuando haces contenido o ads, estás robando atención de los category kings, no creando nueva. Los prospectos llegan con creencias pre-formadas que debes neutralizar. Ley 2 (Entropía): cualquier sistema sin input de energía decae. Tu contenido, tu cultura de equipo, tu generación de leads: todos decaen si no les inyectas energía constantemente. Ley 3 (Cero absoluto): no existe el sistema perfecto. Nunca llegarás al 100% de close rate ni al 0% de fricciones.",
-    takeaways: [
-      "Cuando dejas de publicar contenido o de hacer marketing aunque sea 2 semanas, la entropía ya está destruyendo tu sistema de leads.",
-      "Los prospectos llegan con creencias formadas por otros gurús. Tu trabajo es neutralizarlas antes de vender las tuyas.",
-      "La generación de atención es el sistema más crítico de tu negocio. Todo lo demás puede sufrir entropía excepto este.",
-      "Acepta que habrá fricciones en ventas, operaciones y contenido. El objetivo es reducirlas, no eliminarlas.",
-      "Los negocios de 7–8 cifras gastan la mayoría de su tiempo en el sistema de atención. ¿Tú dónde gastas el tuyo?"
-    ]
-  },
-  {
-    tag: "Oferta & Mercado",
-    title: "Cómo Hormozi Pasó de Broke a Millonario",
-    subtitle: "El principio del 'bote correcto': skill + vehículo + corriente = éxito desproporcionado",
-    summary: "Paul expande la metáfora de Warren Buffett: no solo importa cómo remas, sino el bote que tienes y si la corriente te ayuda o te va en contra. Hormozi era nivel 7–8 en habilidades, pero estaba en un vehículo nivel 2 (gimnasios). Russell Brunson le dijo que necesitaba un vehículo mejor, y así nació Gym Launch. La lección: puedes ser un experto increíble pero estar en un nicho o modelo de negocio que tiene un techo muy bajo. Los mejores closers y emprendedores tienen la habilidad de reconocer qué oferta está en tendencia y moverse hacia ella.",
-    takeaways: [
-      "Evalúa tu oferta actual: ¿estás remando contra la corriente o con ella? ¿El mercado te está pidiendo lo que vendes?",
-      "El skill es importante, pero el vehículo (modelo de negocio) y el timing del mercado multiplican o anulan ese skill.",
-      "SMMA, FBA, AI, contenido: siempre hay algo que vende con facilidad. Identifica qué es HOY y posiciónate.",
-      "Antes de escalar tu oferta, pregunta: ¿puedo dejar caer el barco en el agua y la corriente me lleva sola?",
-      "Si cada venta es una batalla, el problema no es tu pitch: es tu oferta o tu mercado."
-    ]
-  },
-  {
-    tag: "Finanzas & Economía",
-    title: "Cómo los Ricos Ven los Negocios",
-    subtitle: "El profit no es dinero que retiras: es energía potencial que puedes convertir en crecimiento",
-    summary: "Paul usa física para explicar economía de negocios: el profit es energía potencial. Como un carrito de montaña rusa al que empujas cuesta arriba, el profit acumulado es lo que te permite acelerar sin tener que empujar manualmente todo el tiempo. El error más común: sacar el profit demasiado pronto (Lamborghinis, relojes, lujos) en lugar de reinvertirlo. Eso te obliga a volver a empujar el carrito desde abajo. La meta es construir una máquina que gire sola (flywheel) con poco input. También hay un punto de fricción en cada modelo donde el esfuerzo ya no vale el retorno.",
-    takeaways: [
-      "Lee 'Profit First' de Mike Michalowicz antes de hacer cualquier otra decisión financiera de tu empresa.",
-      "Reinvierte el profit en sistemas (marketing, contratación, automatización) antes de sacarlo como dividendo personal.",
-      "Cada modelo de negocio tiene un techo natural. Cuando el esfuerzo ya no escala el retorno, es hora de cambiar de modelo.",
-      "No confundas revenue (vanidad) con profit (realidad). Muchos negocios de $100K/mes están quebrando.",
-      "El flywheel (la máquina que se mueve sola) es el objetivo final: llegar a un punto donde el negocio genera sin tu intervención constante."
-    ]
-  },
-  {
-    tag: "Liderazgo & Relaciones",
-    title: "Cómo Tener Mejores Relaciones en Negocios y Vida",
-    subtitle: "El principio más ignorado del liderazgo: las expectativas explícitas",
-    summary: "Paul descubre en tiempo real que nunca le definió expectativas claras a su CRO Justin, algo que hace con todos sus empleados. Las relaciones que le han frustrado más son invariablemente aquellas donde nunca se establecieron expectativas claras. Las más fructíferas son donde ambas partes saben exactamente qué esperar. La solución: decirlo verbalmente Y escribirlo. Solo verbal se olvida, solo escrito no garantiza que lo vio. Ambos canales juntos crean un estándar medible y justo. Esto aplica a equipos, socios, clientes, incluso relaciones personales.",
-    takeaways: [
-      "Define expectativas con cada colaborador en su primera semana: verbalmente Y por escrito. Sin ambas, no existe la expectativa.",
-      "Si alguien de tu equipo te decepciona, antes de culparlos, pregúntate: ¿le comuniqué claramente qué esperaba?",
-      "Crea un employee handbook que se actualice continuamente con lo que se espera de cada rol.",
-      "En relaciones de negocio: di qué das tú, qué esperas recibir, y cuándo la relación deja de ser win-win.",
-      "El estándar que no comunicas es el estándar que no puedes exigir. Las consecuencias solo son justas cuando las expectativas fueron claras."
-    ]
-  },
-  {
-    tag: "Precios & Valor",
-    title: "Cómo Poner Precio a tu Agencia u Oferta de Coaching",
-    subtitle: "La fórmula: Precio = (Valor × Servicio) × Confianza",
-    summary: "Paul presenta una ecuación de pricing: P = (V × S) × T. V es el valor monetario que el cliente obtiene trabajando contigo (cuánto gana o ahorra). S es tu porcentaje según la complejidad de tu servicio (10–20%). T es el nivel de confianza que el prospecto tiene en ti antes de comprar (0.1 a 0.9). Ejemplo: si ayudas a alguien a ganar $50K/mes, tu servicio vale un 15% de complejidad media, y tienen 60% de confianza, puedes cobrar $4,500/mes. Pero si tienes el mismo servicio con 80% de confianza, puedes cobrar $12,000/mes. La confianza (que se construye con marketing) multiplica tu precio posible.",
-    takeaways: [
-      "Calcula el valor real que entregas a tus clientes en dólares. Tu precio debe ser el 10–20% de ese valor.",
-      "La confianza que construyes en marketing (YouTube, casos de éxito, referidos) es lo que determina el precio que puedes cobrar.",
-      "Dos empresas con el mismo servicio pueden cobrar 4x más o menos solo por la diferencia en trust. El marketing es pricing.",
-      "Si vendes solo con ads fríos sin contenido previo, solo puedes cobrar lo que justifica el trust mínimo.",
-      "La percepción de valor se construye antes de la llamada de ventas. El precio es consecuencia del marketing, no de la negociación."
-    ]
-  },
-  {
-    tag: "Ventas",
-    title: "Cómo Vender Software, Coaching o Servicios",
-    subtitle: "Las 3 ventas que hay dentro de cada venta: problema, metodología, solución",
-    summary: "Paul da un training profundo de ventas: en cada venta hay 3 cierres que deben ocurrir en orden. Primero, cerrar al prospecto en que tiene un problema real (muchos no lo reconocen). Segundo, cerrar en la metodología (el cómo se resuelve el problema) antes de mencionar el precio. Tercero, presentar la solución como la aplicación natural de la metodología acordada. El error más común: los closers saltan directamente al tercer cierre. Si no cerraste en la metodología, el prospecto compara precios con otros porque no entiende por qué tu solución es diferente. La discovery call es la parte más importante de todo el proceso.",
-    takeaways: [
-      "Discovery es el 70% de cada venta. Quien entiende mejor el problema del prospecto, cierra más.",
-      "Nunca menciones tu producto o precio hasta que el prospecto haya acordado contigo el 'cómo' resolver su problema.",
-      "Haz preguntas que solo alguien que entiende profundamente su industria podría hacer. Eso es rapport real.",
-      "Vende la metodología, no el producto. 'Ya sea que trabajes con nosotros o no, necesitas hacer X, Y, Z para lograrlo.'",
-      "Si recibes muchos 'déjame pensarlo', el problema está en que no cerraste en metodología antes de ofrecer solución."
-    ]
-  },
-  {
-    tag: "Productividad & Estilo de Vida",
-    title: "La Regla de las 2 Horas que Cambió mi Negocio (y mi Vida)",
-    subtitle: "Cómo trabajar menos y lograr más con deep work intencional",
-    summary: "Paul basa este video en 'Deep Work' de Cal Newport: los estudios muestran que el cerebro solo puede hacer trabajo profundo (cpu al 99%) alrededor de 2 horas diarias. El resto es trabajo medio o ligero. El error: la mayoría de emprendedores trata todas sus horas como iguales y llena el día de trabajo sin ton ni son. La solución: asignar presupuesto de tiempo estricto, como asignas presupuesto de dinero. Dentro de ese presupuesto, elegir con precisión quirúrgica qué tarea moverá más el negocio. El resultado: más logros en menos tiempo y espacio para tener profundidad como persona.",
-    takeaways: [
-      "Designa 2–3 horas de deep work (sin distracciones, no multitasking) cada día para las tareas que más mueven el negocio.",
-      "Antes de tu bloque de trabajo, pregunta: ¿qué es lo único que si hago hoy, todavía va a ser relevante en 1 año?",
-      "El trabajo sin límite de tiempo produce trabajo de baja calidad. Los constraints producen decisiones mejores.",
-      "Construye hobbies e intereses fuera del negocio ahora, no cuando 'tengas tiempo'. Eso nunca llega.",
-      "La identidad basada solo en el trabajo es una trampa. Las personas más interesantes (y más influyentes) tienen profundidad fuera del negocio."
-    ]
-  },
-  {
-    tag: "Ventas",
-    title: "El Mayor Hack de Ventas",
-    subtitle: "Los 3 cierres que todo vendedor profesional debe dominar",
-    summary: "Paul simplifica años de libros de ventas a un principio: en cada venta hay 3 cierres necesarios: Cambio (el prospecto debe entender que no puede seguir haciendo lo que hace para llegar donde quiere), Metodología (cuál es el camino correcto, descalificando los caminos alternativos), y Solución (tu producto como ejecución práctica de esa metodología). Los humanos evitan el cambio porque prefieren los patrones conocidos. El trabajo del closer es demostrar lógicamente que su patrón actual no los llevará a su destino. La lógica no decae con el tiempo; las emociones sí.",
-    takeaways: [
-      "Primero cierra en 'cambio': muéstrale al prospecto que lo que hace hoy no puede llevarlo a donde quiere ir.",
-      "Cierra en metodología ANTES de mencionar precio: alinea en el 'cómo' mientras no hay dinero involucrado.",
-      "Desacredita las metodologías alternativas lógicamente, no emocionalmente.",
-      "Una venta basada en lógica sólida sobrevive a que el prospecto cuelgue el teléfono. Una venta emocional se evapora.",
-      "El libro 'Gap Selling' de Keenan es la biblia de esta aproximación. Léelo."
-    ]
-  },
-  {
-    tag: "Producto & Valor",
-    title: "La Psicología del Valor: Lo que Tus Clientes Realmente Compran",
-    subtitle: "Valor percibido vs. valor realizado: la decisión que define la longevidad de tu negocio",
-    summary: "Paul distingue entre valor percibido (lo que el cliente cree que obtendrá antes de comprar) y valor realizado (lo que realmente obtiene al usar el producto). El mundo online está lleno de negocios que venden percepción: muchos módulos, horas de grabación, jerga técnica. Eso vende, pero destruye la retención y genera disputas y refunds. Los negocios que duran (Iman Gadzhi, Cole Gordon) invierten en entregar valor real aunque sea más difícil de vender. Un libro pequeño puede tener más valor que uno grande, pero el libro grande se vende solo.",
-    takeaways: [
-      "Pregúntate: ¿tu negocio está construido alrededor de la percepción de valor o del valor real entregado?",
-      "El valor percibido vende en el corto plazo. El valor realizado genera referidos, retención y longevidad.",
-      "Los refunds y disputas son síntoma de una brecha entre lo que prometiste (percepción) y lo que entregaste (realidad).",
-      "No agregues contenido de relleno para parecer más valioso. Los mejores productos son densos y directos al punto.",
-      "Los testimonios y casos de éxito reales son más valiosos que cualquier táctica de marketing. Construye resultados primero."
-    ]
-  },
-  {
-    tag: "Contenido & Marca",
-    title: "Pensar 5 Pasos Adelante en los Negocios",
-    subtitle: "Cómo Paul construyó su ecosistema de contenido por accidente (y qué aprender de eso)",
-    summary: "Paul narra la evolución accidental de su estrategia de contenido: empezó con un grupo de Slack a $1/día grabando en Zoom, luego pasó a 4K para mejorar el short-form, luego añadió vlogs, y finalmente llegó a YouTube cuando se dio cuenta que estaba poniendo todo ese esfuerzo para solo 60–150 views. El flywheel actual: YouTube genera audiencia → la audiencia entra al Daily Bread ($17/mes) → ese ingreso fondea el equipo de contenido → el contenido mejora el YouTube. La lección: no necesitas un plan maestro. Necesitas empezar, iterar y seguir la tracción.",
-    takeaways: [
-      "No esperes tener la estrategia perfecta de contenido. Empieza con algo simple hoy y itera basándote en lo que funciona.",
-      "El contenido diario no tiene que ser perfecto: tiene que ser consistente. La consistencia vence a la perfección.",
-      "Construye un flywheel de contenido: cada pieza que creas debe alimentar la siguiente parte del sistema.",
-      "Documenta tu proceso de construcción de negocio. Eso es contenido auténtico y de alto valor.",
-      "El contenido es tu mejor vendedor de 24/7. Invierte en él como si fuera un empleado de alto rendimiento."
-    ]
-  },
-  {
-    tag: "Ventas & Producto",
-    title: "Este Loom Genera $300K/Año",
-    subtitle: "Análisis en vivo de un VSL: los errores que cuestan miles de dólares",
-    summary: "Paul revisa en tiempo real el VSL de un cliente (Gus) e identifica los problemas más comunes: falta de confianza al hablar, argumentos débiles, falta de claridad en el rango de clientes que puede servir, y ausencia de prueba social contundente. Sus correcciones principales: ser específico sobre a quién sirves y qué resultados produces, mostrar logos grandes no listas de texto, hablar con seguridad como si ya hubieras grabado ese take 80 veces, y conectar cada promesa a una metodología concreta. Un VSL potente es el activo de ventas con mayor ROI que puede tener un infoproductor.",
-    takeaways: [
-      "Tu VSL es el vendedor que trabaja 24/7. Inviértele el mismo tiempo y cuidado que a tu mejor empleado de ventas.",
-      "Sé específico: 'escalo negocios de info de $10K a $50K/mes' convierte 10x mejor que 'ayudo a escalar tu negocio'.",
-      "La falta de confianza en el tono de voz destruye la credibilidad del mensaje, sin importar lo bien escrito que esté.",
-      "Muestra prueba social visual (logos grandes, números reales) antes de hacer promesas.",
-      "Practica tu VSL hasta que salga sin tropiezos. La fluidez comunica competencia mejor que cualquier palabra que uses."
-    ]
-  },
-  {
-    tag: "Crecimiento & Estrategia",
-    title: "Q&A: Cómo Llegar a $500K/Mes",
-    subtitle: "Respuestas directas a las preguntas más importantes de emprendedores",
-    summary: "En este Q&A Paul responde con franqueza: llegar a $500K/mes requiere básicamente dos cosas: conseguir que gente vea tu negocio y convertirlos en clientes. La operación se construye después. Sobre aprender ventas: no se aprende leyendo, se aprende haciendo miles de llamadas. Sobre el CRM ideal para ventas: Close.com sin discusión. Sobre el primer onboarding de clientes: pide acceso a todo (VSL, CRM, Stripe, loom videos de 30–60 min) y busca el mayor limitante antes de cualquier otra cosa. Para quienes quieren trabajar internacionalmente desde países con monedas débiles: sé mejor y más barato que el talento local.",
-    takeaways: [
-      "Para llegar a $500K/mes necesitas: tráfico que escala + conversión que convierte. Todo lo demás es detalles.",
-      "Las ventas no se aprenden estudiando: se aprenden con reps. Pon a tu equipo en llamadas reales cuanto antes.",
-      "Close.com es el CRM de ventas más efectivo para equipos de alto rendimiento en el espacio online.",
-      "Al onboardear un nuevo cliente, pide acceso a TODO antes de opinar. El problema real raramente es el que ellos creen.",
-      "Si eres talento internacional, solo puedes competir siendo significativamente mejor O más económico. No hay término medio."
-    ]
-  },
-  {
-    tag: "Contenido & Marca Personal",
-    title: "Por Qué el Contenido Diario es el Mejor Marketing para Emprendedores",
-    subtitle: "La estrategia de contenido que construye autoridad, leads y negocio simultáneamente",
-    summary: "Paul argumenta que el contenido diario es la forma de marketing con mayor ROI a largo plazo para infoproductores y emprendedores. No porque sea fácil, sino porque construye tres activos a la vez: audiencia (tráfico orgánico), autoridad (la gente te ve como experto) y un sistema de warm leads (quienes llegan a ti ya confían). Las plataformas como YouTube tienen memoria: cada video es un activo que sigue generando vistas y leads meses después de publicarse. La clave es empezar imperfecto y mejorar en público.",
-    takeaways: [
-      "Cada pieza de contenido que publicas es un activo que trabaja por ti 24/7 indefinidamente.",
-      "La consistencia en el tiempo es la única estrategia de contenido que funciona. 100 videos mediocres superan a 10 videos perfectos.",
-      "Documenta lo que estás viviendo en tu negocio. Ese es el contenido más valioso y auténtico que puedes crear.",
-      "El contenido diario llena el barómetro de confianza de tus prospectos antes de cualquier llamada de ventas.",
-      "No esperes a ser un experto reconocido para empezar. Documenta el viaje desde donde estás hoy."
-    ]
-  },
-  {
-    tag: "Ventas & Liderazgo",
-    title: "Lo que Aprendí sobre Liderazgo con más de 300 Empleados",
-    subtitle: "Las verdades incómodas que solo se aprenden dirigiendo equipos grandes",
-    summary: "Con más de 300 personas contratadas a lo largo de su carrera, Paul destila las lecciones más importantes: los problemas de cultura siempre empiezan en la cima, las expectativas no comunicadas son la fuente del 80% de los conflictos, y los mejores líderes crean más líderes, no más seguidores. El liderazgo real no es motivar con discursos: es crear los sistemas, expectativas y entorno donde las personas de alto rendimiento puedan brillar.",
-    takeaways: [
-      "La cultura de tu empresa es un reflejo exacto de lo que toleras como líder. Si hay problemas culturales, empieza mirándote a ti.",
-      "Contrata por carácter primero, skill segundo. El skill se enseña; el carácter es quien es esa persona.",
-      "Los mejores líderes multiplican líderes a su alrededor. Si eres el único que puede tomar decisiones, eres el cuello de botella.",
-      "Feedback directo y frecuente es más valioso que evaluaciones anuales. No dejes que los problemas se acumulen.",
-      "Protege el tiempo y energía de tu equipo de la misma manera que proteges el tuyo. Equipo quemado = negocio quemado."
-    ]
-  },
-  {
-    tag: "Estrategia",
-    title: "Cómo se Ve el Apalancamiento en los Negocios",
-    subtitle: "Los 5 tipos de leverage y cuál es el más ignorado",
-    summary: "Paul desglosa los diferentes tipos de apalancamiento en negocios: tiempo, recursos, equipo, capital y —el más ignorado— el leverage de la oferta en el mercado correcto en el momento correcto. Muchos emprendedores trabajan duro con pocas palancas. Los más exitosos identifican cuál palanca mueve más el negocio y la presionan hasta el límite antes de añadir otra. El contenido como palanca es especialmente poderoso porque escala sin proporcionalidad a tu tiempo.",
-    takeaways: [
-      "Identifica en qué tipo de leverage está tu mayor oportunidad ahora: ¿tiempo, equipo, capital, contenido u oferta?",
-      "El contenido es leverage puro: lo creas una vez y trabaja indefinidamente sin tu presencia.",
-      "La oferta correcta en el mercado correcto en el momento correcto tiene más leverage que cualquier otra palanca.",
-      "Antes de añadir una nueva palanca, maximiza la que ya tienes. La distracción es el enemigo del leverage.",
-      "El apalancamiento real no es trabajar más: es lograr que el sistema trabaje para ti."
-    ]
-  },
-  {
-    tag: "Productividad & Equipo",
-    title: "Lo que No Sabes sobre Emprendedores y Asistentes Ejecutivos",
-    subtitle: "El multiplicador de tiempo más infrautilizado en el mundo del emprendimiento",
-    summary: "Paul argumenta que un asistente ejecutivo de calidad es la inversión con mayor ROI que puede hacer un emprendedor que ya genera ingresos consistentes. El EA no solo gestiona agenda: libera al CEO para enfocarse en las actividades de más alto valor. El problema: la mayoría de emprendedores contratan un EA cuando ya están al límite, en lugar de anticiparlo. Y cuando lo contratan, no invierten tiempo en entrenarlos correctamente, lo que lleva al fracaso de la relación.",
-    takeaways: [
-      "Un EA bien entrenado puede devolverte 2–4 horas de trabajo de alto valor por día.",
-      "Documenta todos tus procesos repetitivos antes de contratar un EA. Sin documentación, el EA no puede reemplazarte.",
-      "Contrata un EA antes de necesitarlo desesperadamente. Si esperas a estar al límite, ya es tarde.",
-      "El primer mes con un EA es inversión, no productividad. Dales tiempo de aprender cómo operas.",
-      "Delimita qué decisiones puede tomar el EA solo y cuáles siempre deben pasar por ti."
-    ]
-  },
-  {
-    tag: "Mentalidad & Tiempo",
-    title: "Por Qué las Personas 'Ocupadas' Siguen Pobres",
-    subtitle: "La diferencia entre estar ocupado y ser productivo",
-    summary: "Paul desmonta el mito del 'estar ocupado' como señal de éxito. La ocupación sin intención es la trampa más común de los emprendedores: llenas el día de tareas que se sienten productivas pero no mueven el negocio. Los verdaderamente productivos protegen su tiempo con obsesión, hacen pocas cosas pero las correctas, y miden resultados, no horas. La gente ocupada optimiza inputs; la gente exitosa optimiza outputs.",
-    takeaways: [
-      "Al final del día pregúntate: ¿qué logré hoy que no hubiera podido hacer alguien más o un sistema? Eso es tu trabajo real.",
-      "'Estar ocupado' es una forma de evitar las decisiones y acciones difíciles que realmente mueven el negocio.",
-      "Mide tu productividad en resultados, no en horas trabajadas. 2 horas de trabajo correcto superan 10 horas de ruido.",
-      "Elimina o delega todo lo que puedas hacer, en lugar de todo lo que solo tú puedes hacer.",
-      "El calendario lleno es el síntoma de un CEO que no sabe delegar, no una señal de éxito."
-    ]
-  },
-  {
-    tag: "Mentalidad & Metas",
-    title: "Por Qué los Pobres se Ponen Metas (y los Ricos No Necesitan Hacerlo)",
-    subtitle: "El shift de mindset que separa a quienes ejecutan de quienes solo planifican",
-    summary: "Paul cuestiona la obsesión con el goal-setting como herramienta de éxito. Su argumento: las personas que más éxito tienen no están obsesionadas con sus metas, están obsesionadas con sus sistemas y estándares. Una meta es un destino; un sistema es el camino. Cuando tienes el sistema correcto, las metas se logran como consecuencia natural. Fijar metas sin sistemas es como tener un GPS sin gasolina.",
-    takeaways: [
-      "En lugar de fijar metas ambiciosas, diseña el sistema diario que, si ejecutas consistentemente, hace que las metas sean inevitables.",
-      "Los estándares que tienes para ti mismo (lo que aceptas y lo que no) determinan tu techo más que cualquier meta.",
-      "Las metas sin revisión semanal son deseos, no compromisos. Si no las revisas, no las tienes.",
-      "Pregunta más útil que '¿cuál es mi meta?': '¿qué haría hoy alguien que ya tiene lo que quiero?'",
-      "El sistema correcto hace que las metas sean consecuencia, no objetivo. Enfócate en el proceso."
-    ]
-  },
-  {
-    tag: "Productividad & Regla 80/20",
-    title: "Trabaja Menos, Gana Más: La Regla del 4%",
-    subtitle: "El principio de Pareto extremo aplicado a tus ingresos",
-    summary: "Paul desarrolla una versión extrema del principio de Pareto: el 4% de tu input genera el 64% de tu output (4% → 20% del trabajo importante → 64% del resultado). Esto significa que la mayoría de lo que haces en tu negocio puede eliminarse sin consecuencias reales. La habilidad de identificar ese 4% es lo que diferencia a los negocios que escalan de los que se quedan estancados. El ejercicio: lista todo lo que haces en el negocio y pregunta cuál de esas actividades produce la mayoría de los ingresos o el crecimiento.",
-    takeaways: [
-      "Haz una lista de todo lo que haces en tu negocio esta semana. Luego pregunta: ¿cuáles 2–3 actividades generan el 80% del resultado?",
-      "Todo lo que no está en ese top 4% es candidato a delegarse, automatizarse o eliminarse.",
-      "La trampa del emprendedor: ocuparse de lo urgente (fires) en lugar de lo importante (el 4% que escala).",
-      "Protege tus actividades de alto apalancamiento como si fueran sagradas. No dejes que el ruido las desplace.",
-      "Cuando en duda sobre qué hacer, vuelve siempre a: ¿esto está en mi 4%? Si no, no lo hagas tú."
-    ]
-  },
-  {
-    tag: "Ventas & Psicología",
-    title: "Duplica tu Tasa de Cierre con 2 Frases",
-    subtitle: "El reencuadre mental que transforma cómo vendes",
-    summary: "Paul presenta el concepto de que dos frases estratégicas al inicio y durante una llamada de ventas pueden transformar completamente la dinámica. El primero: establecer el frame ('si no veo que puedo ayudarte, no te haré una oferta') que elimina la presión y genera confianza. El segundo: la transición de metodología ('ya sea que trabajes con nosotros o no, creo que necesitas hacer X'). Estas frases no son trucos: son reencuadres de posicionamiento que convierten al vendedor en consultor.",
-    takeaways: [
-      "Di al inicio de cada llamada: 'Si no veo cómo puedo ayudarte específicamente, no te haré ninguna oferta.' Eso desactiva la guardia del prospecto.",
-      "Usa la frase de metodología: 'Independientemente de si trabajas con nosotros, creo que necesitas X, Y, Z.' Eso te posiciona como experto, no como vendedor.",
-      "El vendedor que más cierra no es el más persuasivo: es el más confiable y el que más entiende el problema del cliente.",
-      "Reencuadra cada llamada: no estás vendiendo, estás diagnosticando. Los doctores no suplican; los compradores vienen a ellos.",
-      "La postura de 'no necesito esta venta' cierra más que cualquier técnica de cierre aprendida en un libro."
-    ]
-  },
-  {
-    tag: "Estrategia & Crecimiento",
-    title: "Comparando un Negocio de $50K/Mes vs $500K/Mes",
-    subtitle: "Las diferencias estructurales que separan ambos niveles",
-    summary: "Paul analiza la diferencia fundamental entre ambos niveles: no es el talento ni las horas, es el sistema. A $50K/mes dependes de tu presencia directa. A $500K/mes tienes sistemas que generan leads, cierran y entregan sin ti. El principal cambio: la mentalidad pasa de 'yo soy el negocio' a 'yo construyo el negocio'. Las métricas que mides cambian, las personas que contratas cambian, y cómo distribuyes tu tiempo cambia completamente.",
-    takeaways: [
-      "A $50K/mes eres el producto. A $500K/mes eres el arquitecto del sistema que entrega el producto.",
-      "¿Qué pasaría con tus ingresos si desapareces 30 días? La respuesta define en qué nivel está realmente tu negocio.",
-      "Los negocios de $500K/mes tienen métricas claras para cada función. Sin métricas, no puedes escalar.",
-      "El paso de $50K a $500K requiere contratar antes de 'necesitarlo' y apalancar antes de poder permitirlo.",
-      "La escasez de tu tiempo debe crecer más rápido que tu negocio. Si no, eres tú quien frena el crecimiento."
-    ]
-  },
-  {
-    tag: "Mentalidad & Resiliencia",
-    title: "Si le Tienes Miedo al Fracaso en los Negocios, Mira Esto",
-    subtitle: "Por qué el fracaso no es lo opuesto al éxito, sino el camino hacia él",
-    summary: "Paul aborda directamente el miedo al fracaso que paraliza a muchos emprendedores potenciales. Su argumento central: el fracaso no es evidencia de que no puedes lograrlo; es evidencia de que estás intentándolo. Todos los negocios exitosos que conoce tienen en común haber pasado por fracasos que parecían terminales. La diferencia no es quiénes no fracasaron, sino quiénes siguieron después de hacerlo.",
-    takeaways: [
-      "El fracaso no es el fin del camino: es información. La pregunta no es 'por qué fracasé', sino '¿qué me enseñó esto?'",
-      "El mayor fracaso no es intentar y caer: es no intentar por miedo a caer. El costo de oportunidad es más caro que el fracaso.",
-      "Normaliza las iteraciones fallidas. Todo producto exitoso pasó por versiones que no funcionaron.",
-      "Rodearte de personas que ya han fracasado y seguido adelante es el mejor antídoto contra el miedo.",
-      "Define con claridad cuál es tu 'worst case scenario'. Casi siempre es mucho más manejable de lo que imaginas."
-    ]
-  },
-  {
-    tag: "Liderazgo & Mentalidad",
-    title: "Dentro de la Mente de un CEO Multi-7 Cifras",
-    subtitle: "Cómo piensa, prioriza y decide alguien que opera en ese nivel",
-    summary: "Paul ofrece una ventana al proceso mental de quien opera un negocio de múltiples 7 cifras: las decisiones se toman rápido y con información incompleta, el foco está siempre en el siguiente cuello de botella (no en todo a la vez), y el ego se subordina a los resultados. Los CEOs en este nivel han aprendido a ignorar el 95% del ruido para concentrarse en el 5% que importa. También han aprendido que su mayor valor no es su ejecución sino su juicio.",
-    takeaways: [
-      "Tu mayor valor como fundador no es tu capacidad de ejecución, es tu criterio para tomar decisiones estratégicas.",
-      "Opera con el 70% de la información. Esperar al 100% siempre es demasiado tarde en los negocios.",
-      "Identifica el cuello de botella #1 de tu negocio esta semana y trabaja solo en eso. Nada más.",
-      "Aprende a ignorar lo urgente que no es importante. Esa habilidad vale más que cualquier táctica de productividad.",
-      "El ego del fundador es el asesino silencioso de más negocios de lo que cualquier competencia puede serlo."
-    ]
-  },
-  {
-    tag: "Ventas & Contratación",
-    title: "Mi Técnica de Contratación de $30M",
-    subtitle: "El proceso exacto para contratar A-players en ventas y posiciones clave",
-    summary: "Paul detalla el proceso específico que usó para construir equipos de ventas que generaron $30M+. Las partes clave: anuncios de trabajo que actúan como copy de ventas (seleccionando a quien aplica), un proceso de múltiples etapas diseñado para eliminar candidatos mediocres automáticamente, y un onboarding que instala la cultura y expectativas desde el día 1. La filosofía: si tu proceso de contratación es fácil, estás atrayendo mediocridad.",
-    takeaways: [
-      "Escribe tu job posting como si fuera copy de ventas: atrae a los A-players y repele a los mediocres naturalmente.",
-      "Crea un proceso de contratación de al menos 3 etapas. Los candidatos que llegan al final están genuinamente motivados.",
-      "En el onboarding, instala cultura y expectativas en los primeros 3 días o jamás lo harás.",
-      "Pide a los candidatos que hagan algo antes de la entrevista final. Los A-players lo hacen; los B-players piden excepciones.",
-      "La cultura se crea en la contratación, no en los posters motivacionales de la oficina."
-    ]
-  },
-  {
-    tag: "Marketing & Influencers",
-    title: "Descubriendo la Verdad detrás del Éxito de tus Influencers Favoritos",
-    subtitle: "Lo que no te cuentan sobre cómo llegaron donde están",
-    summary: "Paul desmonta la narrativa de éxito rápido que rodea a muchos influencers y gurús del espacio online. La realidad detrás de la mayoría: años de trabajo invisible, múltiples fracasos antes del éxito visible, y mucho más soporte (equipo, capital, conexiones) del que admiten públicamente. El peligro: compararte con su momento de éxito sin ver los años de preparación. La oportunidad: aprender de su proceso real, no de su imagen curada.",
-    takeaways: [
-      "El éxito que ves online es siempre un resumen editado de años de trabajo que nunca viste.",
-      "Los 'overnight successes' son, sin excepción, el resultado de años de preparación que ocurrieron en privado.",
-      "Sé escéptico con quien solo muestra éxitos. Los mejores mentores también muestran sus fracasos y procesos.",
-      "Importa más aprender el proceso que les llevó allí que imitar el resultado final.",
-      "Compara tu proceso con el proceso de otros, no tu inicio con su pico. Eso te dará perspectiva real."
-    ]
-  },
-  {
-    tag: "Marketing & Psicología",
-    title: "Revelando el Truco de Psicología de Marketing que te Engañó",
-    subtitle: "Cómo el marketing complejo crea percepción de valor sin entregar sustancia",
-    summary: "Paul analiza cómo el marketing complicado y lleno de jerga científica es frecuentemente una señal de poca sustancia real. Las marcas que usan física cuántica, neurociencia o términos técnicos para vender productos simples están explotando la percepción de valor. Los consumidores asumen que algo complicado es más valioso. El antídoto: busca simplicidad en el marketing. Las mejores ofertas se explican simplemente porque el valor es real, no construido con complejidad artificial.",
-    takeaways: [
-      "Si tu marketing necesita ser complicado para parecer valioso, revisa si el producto real justifica el precio.",
-      "La simplicidad en el marketing es señal de confianza en el producto. Lo complicado oculta, lo simple muestra.",
-      "Desconfía de propuestas de valor que solo entiendes después de que te las explican tres veces.",
-      "Tu mejor copy es el que tu cliente ideal puede repetir a un amigo en 30 segundos.",
-      "La complejidad artificial crea clientes confundidos que refundan. La claridad crea clientes comprometidos que refieren."
-    ]
-  },
-  {
-    tag: "Bienestar & Productividad",
-    title: "Mira Esto si Estás Quemado",
-    subtitle: "Cómo salir del burnout sin destruir el negocio que construiste",
-    summary: "Paul habla directamente sobre el burnout que experimentó y que ve en muchos emprendedores: la trampa de construir un negocio que depende 100% de tu presencia y energía, lo que eventualmente lleva al colapso. Su solución no es trabajar menos sino trabajar diferente: construir sistemas que funcionen sin ti, establecer límites de tiempo no negociables, y reconectar con por qué empezaste. El burnout no es señal de debilidad: es señal de que tu modelo de negocio no es sostenible.",
-    takeaways: [
-      "Si estás quemado, el problema no eres tú: es cómo está estructurado tu negocio. Rediseña el sistema, no te esfuerces más.",
-      "Crea límites de tiempo no negociables para el negocio. Sin ellos, el negocio tomará todo lo que le des.",
-      "El burnout llega cuando tu identidad está completamente fusionada con tu negocio. Mantén una vida separada.",
-      "Contrata o automatiza la tarea que más te drena hoy. Esa es la inversión más urgente que puedes hacer.",
-      "Reconecta regularmente con el 'por qué' original: ¿para qué construiste esto? Si ya no lo recuerdas, el burnout ya llegó."
-    ]
-  },
-  {
-    tag: "Nuevos Emprendedores",
-    title: "Por Qué Fracasan los Nuevos Dueños de Negocio",
-    subtitle: "Los 5 errores que garantizan el fracaso antes de los 2 años",
-    summary: "Paul señala los patrones más comunes de fracaso temprano: intentar hacer todo sin haber validado la oferta, gastar en escala antes de tener product-market fit, copiar modelos de negocio de otros sin entender el contexto, no generar suficiente volumen de ventas para aprender, y sobre-complicar lo simple. El negocio más simple posible que convierte es siempre mejor que el modelo sofisticado que aún no cierra.",
-    takeaways: [
-      "Antes de escalar, valida: ¿puedes vender esto manualmente, repetidamente, a personas que no conoces?",
-      "El error #1 del primer año: gastas en herramientas, branding y procesos antes de tener un cliente pagador.",
-      "Copia la estrategia, no el modelo. Lo que funciona para alguien con 5 años de marca y audiencia no funcionará para ti hoy.",
-      "La velocidad de feedback importa más que la perfección. Lanza, mide, ajusta. Repite.",
-      "La simplicidad escala. La complejidad rompe. Mantén el modelo lo más simple posible por el mayor tiempo posible."
-    ]
+  // Cuenta las cards reales (excluye la de "agregar")
+  const realCards = document.querySelectorAll('.card:not(.card-add)');
+  document.getElementById('pageCount').textContent = realCards.length;
+  document.getElementById('footerCount').textContent = `${realCards.length} página${realCards.length !== 1 ? 's' : ''}`;
+
+  // Buscador
+  function filterCards(query) {
+    const q = query.toLowerCase().trim();
+    let visible = 0;
+
+    realCards.forEach(card => {
+      const searchable = (card.dataset.search + ' ' + card.textContent).toLowerCase();
+      if (!q || searchable.includes(q)) {
+        card.style.display = '';
+        visible++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    document.getElementById('emptyState').style.display = (visible === 0 && q) ? 'block' : 'none';
   }
-];
-
-// Render TOC
-const tocGrid = document.getElementById('tocGrid');
-chapters.forEach((ch, i) => {
-  const a = document.createElement('a');
-  a.className = 'toc-link';
-  a.href = `#chapter-${i+1}`;
-  a.innerHTML = `<span class="toc-num">${String(i+1).padStart(2,'0')}</span><span>${ch.title}</span>`;
-  tocGrid.appendChild(a);
-});
-
-// Render Chapters
-const container = document.getElementById('chaptersContainer');
-chapters.forEach((ch, i) => {
-  const div = document.createElement('div');
-  div.className = 'chapter';
-  div.id = `chapter-${i+1}`;
-  div.dataset.search = `${ch.title} ${ch.subtitle} ${ch.summary} ${ch.takeaways.join(' ')} ${ch.tag}`.toLowerCase();
-  div.style.animationDelay = `${i * 0.04}s`;
-
-  const takeawaysHTML = ch.takeaways.map(t => `
-    <div class="takeaway-item">
-      <div class="takeaway-bullet"></div>
-      <span>${t}</span>
-    </div>
-  `).join('');
-
-  div.innerHTML = `
-    <div class="chapter-header">
-      <div class="chapter-num">${String(i+1).padStart(2,'0')}</div>
-      <div class="chapter-meta">
-        <span class="chapter-tag">${ch.tag}</span>
-        <h2 class="chapter-title">${ch.title}</h2>
-        <p class="chapter-subtitle">${ch.subtitle}</p>
-      </div>
-    </div>
-    <div class="chapter-body">
-      <span class="summary-label">Resumen</span>
-      <p class="summary-text">${ch.summary}</p>
-      <div class="takeaways-box">
-        <div class="takeaways-title">Takeaways para el infoproductor &amp; emprendedor</div>
-        ${takeawaysHTML}
-      </div>
-    </div>
-  `;
-  container.appendChild(div);
-});
-
-// Search
-function filterChapters(query) {
-  const q = query.toLowerCase().trim();
-  document.querySelectorAll('.chapter').forEach(ch => {
-    if (!q || ch.dataset.search.includes(q)) {
-      ch.style.display = '';
-    } else {
-      ch.style.display = 'none';
-    }
-  });
-}
 </script>
+
 </body>
 </html>
