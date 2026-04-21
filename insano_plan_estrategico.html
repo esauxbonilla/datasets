@@ -1,0 +1,1526 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insano — Plan Estratégico Mayo 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --white: #f5f0eb;
+    --red: #e8341a;
+    --red-dark: #b52a13;
+    --gray: #1a1a1a;
+    --gray-mid: #2e2e2e;
+    --gray-light: #888;
+    --drop: #7c6fcd;
+    --drop-light: #c9c3f5;
+    --event: #1d9e75;
+    --event-light: #9fe1cb;
+    --hotsale: #d85a30;
+    --hotsale-light: #f5c4b3;
+    --warm: #ba7517;
+    --warm-light: #fac775;
+    --email: #d4537e;
+    --email-light: #f4c0d1;
+    --colab: #639922;
+    --colab-light: #c0dd97;
+    --content: #378add;
+    --content-light: #b5d4f4;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* NOISE TEXTURE */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.6;
+  }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 3rem 2rem 2.5rem;
+    border-bottom: 1px solid #222;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 80% 20%, #e8341a18 0%, transparent 60%),
+                radial-gradient(ellipse at 10% 80%, #7c6fcd12 0%, transparent 50%);
+  }
+
+  .hero-tag {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4rem, 14vw, 9rem);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title span { color: var(--red); }
+
+  .hero-subtitle {
+    font-size: 14px;
+    color: var(--gray-light);
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    position: relative;
+    z-index: 1;
+    max-width: 500px;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: #222;
+    border: 1px solid #222;
+    position: relative;
+    z-index: 1;
+  }
+
+  .stat {
+    background: var(--black);
+    padding: 1.25rem 1rem;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.2rem;
+    color: var(--red);
+    line-height: 1;
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 10px;
+    color: var(--gray-light);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: block;
+    margin-top: 4px;
+  }
+
+  /* SECTION */
+  section {
+    position: relative;
+    z-index: 1;
+    padding: 3rem 1.5rem;
+    border-bottom: 1px solid #1a1a1a;
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #222;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    margin-bottom: 2rem;
+  }
+
+  /* LEGEND */
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 1.5rem;
+  }
+
+  .leg {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    color: var(--gray-light);
+    letter-spacing: 0.05em;
+    padding: 4px 8px;
+    border: 1px solid #222;
+    border-radius: 2px;
+    background: #111;
+  }
+
+  .leg-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 1px;
+    flex-shrink: 0;
+  }
+
+  /* CALENDAR */
+  .cal-hint {
+    font-size: 11px;
+    color: var(--gray-light);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.03em;
+  }
+
+  .month-block { margin-bottom: 2.5rem; }
+
+  .month-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.1em;
+    color: var(--gray-light);
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #1e1e1e;
+  }
+
+  .cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+  }
+
+  .day-hdr {
+    font-size: 9px;
+    text-align: center;
+    color: #444;
+    padding: 4px 0;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+  }
+
+  .day {
+    min-height: 52px;
+    background: #111;
+    border: 1px solid #1a1a1a;
+    padding: 4px;
+    cursor: default;
+    transition: border-color 0.15s;
+    position: relative;
+  }
+
+  .day.has-ev { cursor: pointer; }
+  .day.has-ev:hover { border-color: #444; }
+  .day.empty { background: transparent; border-color: transparent; }
+  .day.today { border-color: var(--red); }
+
+  .day-n {
+    font-size: 10px;
+    color: #555;
+    display: block;
+    margin-bottom: 2px;
+    font-weight: 500;
+  }
+
+  .day.today .day-n { color: var(--red); }
+
+  .pill {
+    font-size: 8px;
+    font-weight: 500;
+    padding: 2px 4px;
+    border-radius: 2px;
+    display: block;
+    margin-top: 2px;
+    line-height: 1.3;
+    word-break: break-word;
+  }
+
+  /* DROPS SECTION */
+  .drops-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: #1a1a1a;
+    border: 1px solid #1a1a1a;
+  }
+
+  .drop-card {
+    background: #0f0f0f;
+    padding: 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .drop-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3rem;
+    color: #222;
+    line-height: 1;
+    flex-shrink: 0;
+    width: 50px;
+  }
+
+  .drop-info {}
+
+  .drop-date {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--red);
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+
+  .drop-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.05em;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .drop-desc {
+    font-size: 12px;
+    color: var(--gray-light);
+    line-height: 1.6;
+  }
+
+  .drop-tag {
+    display: inline-block;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    margin-top: 8px;
+    font-weight: 500;
+  }
+
+  /* PHASES */
+  .phase {
+    margin-bottom: 2rem;
+    border-left: 2px solid #222;
+    padding-left: 1.25rem;
+  }
+
+  .phase-date {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--red);
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+
+  .phase-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+  }
+
+  .phase-tasks {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .phase-tasks li {
+    font-size: 12px;
+    color: var(--gray-light);
+    display: flex;
+    gap: 8px;
+    line-height: 1.5;
+  }
+
+  .phase-tasks li::before {
+    content: '—';
+    color: #333;
+    flex-shrink: 0;
+  }
+
+  /* ESTRATEGIA CARDS */
+  .strategy-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1px;
+    background: #1a1a1a;
+    border: 1px solid #1a1a1a;
+  }
+
+  .strategy-card {
+    background: #0f0f0f;
+    padding: 1.5rem;
+  }
+
+  .s-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    margin-bottom: 1rem;
+  }
+
+  .s-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+  }
+
+  .s-desc {
+    font-size: 12px;
+    color: var(--gray-light);
+    line-height: 1.7;
+  }
+
+  .s-items {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .s-item {
+    font-size: 11px;
+    color: #666;
+    display: flex;
+    gap: 8px;
+    line-height: 1.5;
+  }
+
+  .s-item::before { content: '›'; color: var(--red); flex-shrink: 0; }
+
+  /* HOT SALE */
+  .hotsale-banner {
+    background: var(--red);
+    padding: 2rem 1.5rem;
+    margin: 0 -1.5rem;
+    text-align: center;
+  }
+
+  .hotsale-banner .tag {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 8px;
+  }
+
+  .hotsale-banner .big {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 10vw, 6rem);
+    line-height: 0.9;
+    color: #fff;
+    letter-spacing: 0.05em;
+  }
+
+  .hotsale-banner .date {
+    font-size: 11px;
+    color: rgba(255,255,255,0.7);
+    margin-top: 8px;
+    letter-spacing: 0.1em;
+  }
+
+  .hotsale-tactics {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: #1a1a1a;
+    border: 1px solid #1a1a1a;
+    margin-top: 1.5rem;
+  }
+
+  .tactic {
+    background: #0f0f0f;
+    padding: 1.25rem 1rem;
+  }
+
+  .tactic-title {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 6px;
+    letter-spacing: 0.05em;
+  }
+
+  .tactic-desc {
+    font-size: 11px;
+    color: var(--gray-light);
+    line-height: 1.6;
+  }
+
+  /* MODAL */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 200;
+    align-items: flex-end;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+  }
+
+  .modal-overlay.open { display: flex; }
+
+  .modal-box {
+    background: #111;
+    border: 1px solid #2a2a2a;
+    border-bottom: none;
+    width: 100%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 1.5rem;
+  }
+
+  .modal-close {
+    width: 100%;
+    padding: 12px;
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    color: var(--gray-light);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 1rem;
+    font-family: 'DM Sans', sans-serif;
+    transition: background 0.15s;
+  }
+
+  .modal-close:hover { background: #222; }
+
+  .modal-date-label {
+    font-size: 10px;
+    color: var(--red);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+
+  .modal-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.25rem;
+  }
+
+  .modal-section { margin-bottom: 1.25rem; }
+
+  .modal-section-label {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #555;
+    font-weight: 500;
+    margin-bottom: 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #1a1a1a;
+  }
+
+  .modal-task {
+    font-size: 12px;
+    color: #aaa;
+    padding: 7px 0;
+    border-bottom: 1px solid #161616;
+    display: flex;
+    gap: 10px;
+    line-height: 1.5;
+    align-items: flex-start;
+  }
+
+  .modal-task:last-child { border-bottom: none; }
+
+  .modal-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 5px;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 2rem 1.5rem;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  footer p {
+    font-size: 11px;
+    color: #333;
+    letter-spacing: 0.1em;
+  }
+
+  /* TEAM */
+  .team-tabs {
+    display: flex;
+    gap: 2px;
+    margin-bottom: 1.5rem;
+    background: #111;
+    border: 1px solid #1a1a1a;
+    padding: 4px;
+    border-radius: 4px;
+    flex-wrap: wrap;
+  }
+
+  .team-tab {
+    flex: 1;
+    min-width: 80px;
+    padding: 8px 10px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 2px;
+    color: var(--gray-light);
+    border: none;
+    background: transparent;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.15s;
+  }
+
+  .team-tab.active {
+    color: var(--black);
+    background: var(--white);
+  }
+
+  .team-member { display: none; }
+  .team-member.active { display: block; }
+
+  .member-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #1a1a1a;
+  }
+
+  .member-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+
+  .member-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.05em;
+    line-height: 1;
+  }
+
+  .member-role {
+    font-size: 11px;
+    color: var(--gray-light);
+    letter-spacing: 0.08em;
+    margin-top: 2px;
+  }
+
+  .task-group { margin-bottom: 1.5rem; }
+
+  .task-group-date {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--red);
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  .task-group-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+    color: var(--white);
+  }
+
+  .team-task {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid #161616;
+    cursor: pointer;
+  }
+
+  .team-task:last-child { border-bottom: none; }
+
+  .task-check {
+    width: 18px;
+    height: 18px;
+    border: 1px solid #333;
+    border-radius: 2px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+    font-size: 11px;
+  }
+
+  .team-task.done .task-check {
+    background: var(--red);
+    border-color: var(--red);
+    color: white;
+  }
+
+  .team-task.done .task-text {
+    text-decoration: line-through;
+    color: #444;
+  }
+
+  .task-text {
+    font-size: 12px;
+    color: #aaa;
+    line-height: 1.5;
+    flex: 1;
+  }
+
+  .add-task-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 1rem;
+  }
+
+  .add-task-input {
+    flex: 1;
+    background: #111;
+    border: 1px solid #222;
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    padding: 8px 10px;
+    border-radius: 2px;
+    outline: none;
+  }
+
+  .add-task-input:focus { border-color: #444; }
+  .add-task-input::placeholder { color: #444; }
+
+  .add-task-btn {
+    background: var(--red);
+    border: none;
+    color: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 8px 14px;
+    cursor: pointer;
+    border-radius: 2px;
+    letter-spacing: 0.05em;
+    transition: background 0.15s;
+  }
+
+  .add-task-btn:hover { background: var(--red-dark); }
+
+  .progress-bar-wrap {
+    height: 3px;
+    background: #1a1a1a;
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+  }
+
+  .progress-bar-fill {
+    height: 100%;
+    background: var(--red);
+    border-radius: 2px;
+    transition: width 0.3s;
+  }
+
+  .progress-label {
+    font-size: 10px;
+    color: var(--gray-light);
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-tag, .hero-title, .hero-subtitle, .hero-stats {
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero-tag { animation-delay: 0.1s; }
+  .hero-title { animation-delay: 0.2s; }
+  .hero-subtitle { animation-delay: 0.3s; }
+  .hero-stats { animation-delay: 0.4s; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-tag">Plan Estratégico · Abril — Junio 2026</div>
+  <h1 class="hero-title">INSANO<br><span>DROPS &</span><br>HOT SALE</h1>
+  <p class="hero-subtitle">Tres drops, un evento, una temporada de ventas. Todo conectado.</p>
+  <div class="hero-stats">
+    <div class="stat">
+      <span class="stat-num">3</span>
+      <span class="stat-label">Drops</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">TFW</span>
+      <span class="stat-label">2–3 Mayo</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">25</span>
+      <span class="stat-label">Hot Sale Mayo</span>
+    </div>
+  </div>
+</div>
+
+<!-- CALENDARIO -->
+<section>
+  <div class="section-label">Calendario</div>
+  <div class="legend">
+    <div class="leg"><div class="leg-dot" style="background:#7c6fcd"></div>Drop</div>
+    <div class="leg"><div class="leg-dot" style="background:#1d9e75"></div>Evento</div>
+    <div class="leg"><div class="leg-dot" style="background:#ba7517"></div>Calentamiento</div>
+    <div class="leg"><div class="leg-dot" style="background:#d85a30"></div>Hot Sale</div>
+    <div class="leg"><div class="leg-dot" style="background:#378add"></div>Contenido</div>
+    <div class="leg"><div class="leg-dot" style="background:#d4537e"></div>Email</div>
+    <div class="leg"><div class="leg-dot" style="background:#639922"></div>Colaboradores</div>
+  </div>
+  <p class="cal-hint">Toca cualquier día marcado para ver actividades</p>
+  <div id="calendars"></div>
+</section>
+
+<!-- DROPS -->
+<section>
+  <div class="section-label">Los Drops</div>
+  <h2 class="section-title">TRES<br>DROPS</h2>
+  <div class="drops-grid">
+    <div class="drop-card">
+      <div class="drop-num">01</div>
+      <div class="drop-info">
+        <div class="drop-date">1 de Mayo</div>
+        <div class="drop-name">RETRO</div>
+        <div class="drop-desc">Antes de TFW. Gabriel cuenta la historia detrás del drop — de dónde viene la marca. El producto + el contexto venden.</div>
+        <span class="drop-tag" style="background:#2a2460;color:#c9c3f5;">Pre-evento</span>
+      </div>
+    </div>
+    <div class="drop-card">
+      <div class="drop-num">02</div>
+      <div class="drop-info">
+        <div class="drop-date">5 de Mayo</div>
+        <div class="drop-name">BEST SELLERS RENOVADOS</div>
+        <div class="drop-desc">Post-TFW. La audiencia nueva del evento ya conoce la marca. "Ya lo conoces, ahora viene mejor." Reviews existentes como prueba social.</div>
+        <span class="drop-tag" style="background:#0a3d2a;color:#9fe1cb;">Post-evento</span>
+      </div>
+    </div>
+    <div class="drop-card">
+      <div class="drop-num">03</div>
+      <div class="drop-info">
+        <div class="drop-date">15 de Mayo</div>
+        <div class="drop-name">JERSEYS <span style="color:#444;font-size:1rem;">(OPCIONAL)</span></div>
+        <div class="drop-desc">Edición limitada — número de piezas visible en tienda. Precio sin descuento ahora; el Hot Sale viene después. Genera urgencia real antes del 25.</div>
+        <span class="drop-tag" style="background:#3d1a08;color:#f5c4b3;">Pre-Hot Sale</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TFW -->
+<section>
+  <div class="section-label">The Fit Weekend</div>
+  <h2 class="section-title">TFW<br>2–3 MAYO</h2>
+
+  <div class="strategy-grid">
+    <div class="strategy-card">
+      <div class="s-icon" style="background:#0a3d2a;">🎯</div>
+      <div class="s-title">Objetivo principal</div>
+      <div class="s-desc">Todo va a Shopify. No cierras en físico. El stand es un punto de captación, no de venta directa.</div>
+    </div>
+    <div class="strategy-card">
+      <div class="s-icon" style="background:#1a1060;">📲</div>
+      <div class="s-title">Stand</div>
+      <div class="s-desc">QR visible directo a insanoclothing.com/tfw. Cupones físicos del 15% en cada bolsa, válidos 10 días. Tablet para captura de emails.</div>
+    </div>
+    <div class="strategy-card">
+      <div class="s-icon" style="background:#2d1508;">🔥</div>
+      <div class="s-title">Gabriel en vivo</div>
+      <div class="s-desc">Live de 15-20 min el primer día desde el stand. Sin aviso exagerado — "estamos en vivo ahorita". Jala tráfico orgánico del evento.</div>
+    </div>
+    <div class="strategy-card">
+      <div class="s-icon" style="background:#1a0d1a;">🏆</div>
+      <div class="s-title">El Reto Insano</div>
+      <div class="s-desc">Competencia de físico + rendimiento. 10 participantes registrados pre-evento. Gabriel es el juez. Premio: entrenamiento 1 mes con Gabriel + producto completo + sesión de contenido oficial.</div>
+    </div>
+    <div class="strategy-card">
+      <div class="s-icon" style="background:#0d2200;">👥</div>
+      <div class="s-title">Reclutamiento colaboradores</div>
+      <div class="s-desc">Pitch de 2 min a perfiles interesantes. Período de prueba 30 días. Meta: $10k en ventas. Sin ropa gratis de entrada. Registro en tablet o QR en el momento.</div>
+    </div>
+    <div class="strategy-card">
+      <div class="s-icon" style="background:#2a0e1a;">📸</div>
+      <div class="s-title">QR en la ropa</div>
+      <div class="s-desc">Los atletas llevan QR pequeño en su ropa ese día. La ropa se convierte en punto de venta ambulante dentro del evento.</div>
+    </div>
+  </div>
+</section>
+
+<!-- EMAILS -->
+<section>
+  <div class="section-label">Secuencia Email</div>
+  <h2 class="section-title">KLAVIYO<br>FLUJOS</h2>
+
+  <div class="phase">
+    <div class="phase-date">4 de Mayo — Día después de TFW</div>
+    <div class="phase-title">Email 1 — Gracias + Cupón</div>
+    <ul class="phase-tasks">
+      <li>Asunto: "Gracias por estar en TFW + tu cupón exclusivo"</li>
+      <li>Foto del stand y del ganador de El Reto</li>
+      <li>Cupón del 15% con fecha límite visible (12 de mayo)</li>
+      <li>CTA directo a tienda</li>
+    </ul>
+  </div>
+
+  <div class="phase">
+    <div class="phase-date">7 de Mayo</div>
+    <div class="phase-title">Email 2 — Recordatorio + Drop 2</div>
+    <ul class="phase-tasks">
+      <li>Recordatorio del cupón — quedan 5 días</li>
+      <li>Presentar Drop 2 como novedad post-evento</li>
+      <li>CTA claro a tienda</li>
+    </ul>
+  </div>
+
+  <div class="phase">
+    <div class="phase-date">11 de Mayo</div>
+    <div class="phase-title">Email 3 — Último aviso cupón</div>
+    <ul class="phase-tasks">
+      <li>Urgencia real — vence mañana</li>
+      <li>Copy directo, sin adornos</li>
+    </ul>
+  </div>
+
+  <div class="phase">
+    <div class="phase-date">20 de Mayo</div>
+    <div class="phase-title">Email VIP — Pre-Hot Sale</div>
+    <ul class="phase-tasks">
+      <li>Solo clientes que ya compraron antes</li>
+      <li>Acceso 24h anticipado al Hot Sale</li>
+      <li>Asunto: "Tú entras primero"</li>
+      <li>Genera lealtad y primeras ventas antes del rush</li>
+    </ul>
+  </div>
+
+  <div class="phase">
+    <div class="phase-date">2 de Junio</div>
+    <div class="phase-title">Email Recap + Reseñas</div>
+    <ul class="phase-tasks">
+      <li>Gracias por comprar en Hot Sale</li>
+      <li>Solicitar reseña con link directo</li>
+      <li>Mostrar qué viene — próximo drop</li>
+    </ul>
+  </div>
+</section>
+
+<!-- HOT SALE -->
+<section style="padding-left:0;padding-right:0;">
+  <div style="padding:0 1.5rem;">
+    <div class="section-label">Hot Sale</div>
+  </div>
+  <div class="hotsale-banner">
+    <div class="tag">Temporada de ventas</div>
+    <div class="big">HOT<br>SALE</div>
+    <div class="date">25 — 29 de Mayo 2026</div>
+  </div>
+  <div style="padding:0 1.5rem;">
+    <div class="hotsale-tactics">
+      <div class="tactic">
+        <div class="tactic-title">Lista VIP anticipada</div>
+        <div class="tactic-desc">Clientes de TFW y drops entran 24h antes. Se sienten inside, compran más rápido.</div>
+      </div>
+      <div class="tactic">
+        <div class="tactic-title">Bundle estratégico</div>
+        <div class="tactic-desc">Pants + top + accesorio. Mejor margen que descuento por pieza suelta.</div>
+      </div>
+      <div class="tactic">
+        <div class="tactic-title">Gabriel el día 1</div>
+        <div class="tactic-desc">Video crudo, sin producción. "Hoy es el día, aquí el link." Ese formato convierte.</div>
+      </div>
+      <div class="tactic">
+        <div class="tactic-title">Contador de stock</div>
+        <div class="tactic-desc">"Quedan 8 piezas de esta talla." Urgencia visible en Shopify. Activar en productos clave.</div>
+      </div>
+      <div class="tactic">
+        <div class="tactic-title">Meta con presupuesto alto</div>
+        <div class="tactic-desc">Advantage+ con los creativos que ya ganaron. No lanzar campañas nuevas — escalar lo que funciona.</div>
+      </div>
+      <div class="tactic">
+        <div class="tactic-title">Colaboradores amplifican</div>
+        <div class="tactic-desc">Todos los colaboradores activos suben content ese mismo día. Coordinado, no espontáneo.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COLABORADORES -->
+<section>
+  <div class="section-label">Colaboradores</div>
+  <h2 class="section-title">RED DE<br>DISTRIBUCIÓN</h2>
+  <div class="strategy-grid">
+    <div class="strategy-card">
+      <div class="s-title">El modelo</div>
+      <div class="s-desc">Colaborador = vendedor de piso en su comunidad fitness. No venta por referido en redes — venta cara a cara en su gym, sus clases, su círculo.</div>
+      <div class="s-items">
+        <div class="s-item">Período de prueba: 30 días</div>
+        <div class="s-item">Meta: $10,000 MXN en ventas</div>
+        <div class="s-item">Sin ropa gratis de entrada</div>
+        <div class="s-item">Si cumplen → entran formalmente con beneficios</div>
+        <div class="s-item">Si no cumplen → salen sin drama</div>
+      </div>
+    </div>
+    <div class="strategy-card">
+      <div class="s-title">Reclutamiento en TFW</div>
+      <div class="s-desc">Pitch de 2 minutos. Registro inmediato en tablet o QR. No se van con solo un Instagram — salen con onboarding concreto o no entran.</div>
+      <div class="s-items">
+        <div class="s-item">Nombre, gym, ciudad, Instagram</div>
+        <div class="s-item">Link de seguimiento personalizado</div>
+        <div class="s-item">Brief del programa</div>
+        <div class="s-item">Revisión de avance: 18 de mayo</div>
+        <div class="s-item">Corte de evaluación: 1 de junio</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPO -->
+<section id="equipo-section">
+  <div class="section-label">Equipo</div>
+  <h2 class="section-title">QUIÉN<br>HACE QUÉ</h2>
+
+  <div id="team-container"></div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>INSANO CLOTHING · PLAN ESTRATÉGICO MAYO 2026</p>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal-box">
+    <div class="modal-date-label" id="m-date"></div>
+    <div class="modal-title" id="m-title"></div>
+    <div id="m-body"></div>
+    <button class="modal-close" onclick="closeModal()">Cerrar</button>
+  </div>
+</div>
+
+<script>
+const DAYS = ['L','M','X','J','V','S','D'];
+const MONTHS_ES = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+
+const clsMap = {
+  'ev-drop': {bg:'#2a2460', color:'#c9c3f5', dot:'#7c6fcd'},
+  'ev-event': {bg:'#0a3d2a', color:'#9fe1cb', dot:'#1d9e75'},
+  'ev-hotsale': {bg:'#3d1a08', color:'#f5c4b3', dot:'#d85a30'},
+  'ev-warm': {bg:'#3d2a00', color:'#fac775', dot:'#ba7517'},
+  'ev-content': {bg:'#0a1f3d', color:'#b5d4f4', dot:'#378add'},
+  'ev-email': {bg:'#3d1a2a', color:'#f4c0d1', dot:'#d4537e'},
+  'ev-colab': {bg:'#162200', color:'#c0dd97', dot:'#639922'},
+};
+
+const events = {
+  '2026-04-20': {label:'Planeación general', cls:'ev-content', tasks:[
+    {cat:'Contenido', items:['Definir brief de atletas y colaboradores','Preparar estructura de El Reto Insano','Confirmar fechas de drops con Gabriel']},
+    {cat:'Ops', items:['Config Shopify — cupones únicos para TFW','Preparar QR codes para el stand','Armar formulario de registro de colaboradores']}
+  ]},
+  '2026-04-22': {label:'Inicio hype TFW', cls:'ev-content', tasks:[
+    {cat:'Contenido', items:['Gabriel: video crudo entrenando — "en X días estamos en TFW"','Post en feed anunciando presencia','Stories de atletas actuales confirmando asistencia']},
+    {cat:'Colaboradores', items:['Avisar a colaboradores actuales que suban story etiquetando TFW']}
+  ]},
+  '2026-04-24': {label:'Registro El Reto Insano', cls:'ev-warm', tasks:[
+    {cat:'Reto', items:['Publicar reglas en stories y feed','Abrir registro por DM o formulario','Requisitos: seguir a Insano + compartir post TFW + video entrenando con hashtag']}
+  ]},
+  '2026-04-27': {label:'Teaser Drop Retro', cls:'ev-warm', tasks:[
+    {cat:'Contenido', items:['Gabriel: video corto contando la historia detrás del Drop Retro','Story con cuenta regresiva al drop','Teaser de producto — no revelar todo']},
+    {cat:'Email', items:['Email teaser a lista — "algo viene el 1 de mayo"']}
+  ]},
+  '2026-04-28': {label:'Brief colaboradores listo', cls:'ev-colab', tasks:[
+    {cat:'Colaboradores', items:['Brief final revisado y listo','Imprimir o tener digital el formulario de onboarding','Definir el pitch de 2 minutos para el stand']}
+  ]},
+  '2026-05-01': {label:'Drop 1 — Retro', cls:'ev-drop', tasks:[
+    {cat:'Drop', items:['Lanzar Drop Retro en Shopify','Activar campaña Meta con creativo de Gabriel + producto','Email a toda la lista']},
+    {cat:'Contenido', items:['Gabriel: video crudo "ya salió el drop, aquí el link"','Atletas suben contenido ese mismo día']}
+  ]},
+  '2026-05-02': {label:'TFW Día 1', cls:'ev-event', tasks:[
+    {cat:'Stand', items:['QR directo a insanoclothing.com/tfw','Cupones 15% en cada bolsa — válidos 10 días','Tablet para captura de emails','Gabriel presente — foto opportunity genera fila orgánica']},
+    {cat:'Contenido', items:['Live de Gabriel desde el stand 15-20 min','Grabar todo — stand, gente, El Reto']},
+    {cat:'Colaboradores', items:['Reclutamiento activo — pitch de 2 min','Registrar: nombre, gym, ciudad, Instagram']},
+    {cat:'El Reto', items:['Presentar participantes en stories','Primera fase: reto físico con Gabriel como juez']}
+  ]},
+  '2026-05-03': {label:'TFW Día 2', cls:'ev-event', tasks:[
+    {cat:'Stand', items:['Continuar captura de emails y cupones','Última oportunidad de compra con QR']},
+    {cat:'El Reto', items:['Anunciar ganador — Gabriel lo presenta en persona','Premio: entrenamiento 1 mes + producto completo + sesión de contenido oficial']},
+    {cat:'Colaboradores', items:['Cerrar lista de reclutados — confirmar datos']}
+  ]},
+  '2026-05-04': {label:'Email 1 — Gracias TFW + Cupón', cls:'ev-email', tasks:[
+    {cat:'Email', items:['Asunto: "Gracias por estar en TFW + tu cupón"','Foto del stand y ganador del Reto','Cupón 15% con fecha límite (12 mayo)','CTA directo a tienda']},
+    {cat:'Contenido', items:['Publicar clips del evento — stand, reto, gente','Gabriel agradece en stories']}
+  ]},
+  '2026-05-05': {label:'Drop 2 — Best Sellers Renovados', cls:'ev-drop', tasks:[
+    {cat:'Drop', items:['Lanzar Drop 2 en Shopify','Activar Meta con creativos de atletas','Email secundario — "ya están de vuelta, mejorados"']},
+    {cat:'Contenido', items:['"Ya lo conoces, ahora viene mejor" — usar reviews como prueba social']},
+    {cat:'Colaboradores', items:['Onboarding formal de reclutados en TFW','Enviar brief, link de seguimiento y meta de $10k']}
+  ]},
+  '2026-05-07': {label:'Email 2 — Recordatorio cupón', cls:'ev-email', tasks:[
+    {cat:'Email', items:['Recordatorio cupón TFW — quedan 5 días','Mostrar Drop 2','CTA claro a tienda']}
+  ]},
+  '2026-05-11': {label:'Email 3 — Último aviso cupón', cls:'ev-email', tasks:[
+    {cat:'Email', items:['Último aviso — cupón vence mañana','Urgencia real, copy directo']}
+  ]},
+  '2026-05-12': {label:'Teaser Hot Sale', cls:'ev-warm', tasks:[
+    {cat:'Contenido', items:['Gabriel: "algo grande viene el 25 de mayo"','Story con cuenta regresiva','Hint del Drop 3']},
+    {cat:'Email', items:['Email teaser Hot Sale a toda la lista']}
+  ]},
+  '2026-05-15': {label:'Drop 3 — Jerseys (opcional)', cls:'ev-drop', tasks:[
+    {cat:'Drop', items:['Lanzar jerseys como edición limitada','Número de piezas visible en tienda','Precio sin descuento — el Hot Sale viene']},
+    {cat:'Contenido', items:['Gabriel presenta los jerseys en video crudo','Contador de stock activado en Shopify']}
+  ]},
+  '2026-05-18': {label:'Revisión colaboradores', cls:'ev-colab', tasks:[
+    {cat:'Colaboradores', items:['Revisar avance — ¿van en camino a $10k?','Dar feedback individual','Identificar quién no va a cumplir']}
+  ]},
+  '2026-05-20': {label:'Email VIP — Pre-Hot Sale', cls:'ev-email', tasks:[
+    {cat:'Email', items:['Solo clientes que ya compraron antes','Acceso 24h anticipado al Hot Sale','Asunto: "tú entras primero al Hot Sale"']}
+  ]},
+  '2026-05-25': {label:'Hot Sale — Día 1', cls:'ev-hotsale', tasks:[
+    {cat:'Hot Sale', items:['Activar descuentos en Shopify','Gabriel: video crudo ese mismo día','Activar campaña Meta con presupuesto alto','Bundles visibles en tienda']},
+    {cat:'Contenido', items:['Contador de stock en productos clave','Atletas y colaboradores amplifican ese día']}
+  ]},
+  '2026-05-26': {label:'Hot Sale Día 2', cls:'ev-hotsale', tasks:[{cat:'Hot Sale', items:['Monitorear stock y conversión','Story de urgencia — "quedan X piezas"','Colaboradores refuerzan en sus comunidades']}]},
+  '2026-05-27': {label:'Hot Sale Día 3', cls:'ev-hotsale', tasks:[{cat:'Hot Sale', items:['Revisar qué productos van más rápido','Ajustar presupuesto Meta hacia mejores creativos']}]},
+  '2026-05-28': {label:'Hot Sale Día 4', cls:'ev-hotsale', tasks:[{cat:'Hot Sale', items:['Email de urgencia — "último día mañana"','Push final en stories']}]},
+  '2026-05-29': {label:'Hot Sale — Cierre', cls:'ev-hotsale', tasks:[{cat:'Hot Sale', items:['Email cierre — "últimas horas"','Gabriel: story de cierre agradeciendo','Desactivar descuentos a medianoche']}]},
+  '2026-06-01': {label:'Corte colaboradores', cls:'ev-colab', tasks:[{cat:'Colaboradores', items:['Evaluar 30 días de prueba','Quién cumplió $10k → entra formalmente','Quién no → sale sin drama','Comunicar resultados individualmente']}]},
+  '2026-06-02': {label:'Email recap + reseñas', cls:'ev-email', tasks:[{cat:'Email', items:['Gracias por comprar en Hot Sale','Solicitar reseña con link directo','Mostrar qué viene']},{cat:'Contenido', items:['Publicar resultados del Hot Sale en formato de contenido']}]},
+  '2026-06-08': {label:'Análisis de resultados', cls:'ev-content', tasks:[{cat:'Análisis', items:['Ventas totales por período — TFW, drops, Hot Sale','Qué creativos funcionaron en Meta','Qué emails tuvieron mejor apertura','Qué colaboradores movieron más','Aprendizajes para Buen Fin']}]},
+};
+
+const months = [
+  {year:2026,month:3,name:'Abril 2026'},
+  {year:2026,month:4,name:'Mayo 2026'},
+  {year:2026,month:5,name:'Junio 2026'},
+];
+
+function pad(n){ return String(n).padStart(2,'0'); }
+
+function buildMonth({year,month,name}){
+  const firstDay = new Date(year,month,1);
+  const lastDay = new Date(year,month+1,0);
+  const startDow = (firstDay.getDay()+6)%7;
+  const totalDays = lastDay.getDate();
+  let html = `<div class="month-block"><div class="month-name">${name}</div><div class="cal-grid">`;
+  DAYS.forEach(d=>{ html+=`<div class="day-hdr">${d}</div>`; });
+  for(let i=0;i<startDow;i++) html+=`<div class="day empty"></div>`;
+  for(let d=1;d<=totalDays;d++){
+    const key=`${year}-${pad(month+1)}-${pad(d)}`;
+    const isToday=key==='2026-04-20';
+    const ev=events[key];
+    const c = ev ? clsMap[ev.cls] : null;
+    html+=`<div class="day${isToday?' today':''}${ev?' has-ev':''}" ${ev?`onclick="openModal('${key}')"`:''}><span class="day-n">${d}</span>`;
+    if(ev) html+=`<span class="pill" style="background:${c.bg};color:${c.color};">${ev.label}</span>`;
+    html+=`</div>`;
+  }
+  const rem=(startDow+totalDays)%7;
+  if(rem>0) for(let i=rem;i<7;i++) html+=`<div class="day empty"></div>`;
+  html+=`</div></div>`;
+  return html;
+}
+
+document.getElementById('calendars').innerHTML = months.map(buildMonth).join('');
+
+function openModal(key){
+  const e = events[key]; if(!e) return;
+  const d = new Date(key+'T12:00:00');
+  const c = clsMap[e.cls];
+  document.getElementById('m-date').textContent = `${d.getDate()} de ${MONTHS_ES[d.getMonth()]} ${d.getFullYear()}`;
+  document.getElementById('m-title').textContent = e.label;
+  let html = '';
+  (e.tasks||[]).forEach(s=>{
+    html+=`<div class="modal-section"><div class="modal-section-label">${s.cat}</div>`;
+    s.items.forEach(item=>{
+      html+=`<div class="modal-task"><div class="modal-dot" style="background:${c.dot}"></div><span>${item}</span></div>`;
+    });
+    html+=`</div>`;
+  });
+  document.getElementById('m-body').innerHTML = html;
+  document.getElementById('modal').classList.add('open');
+}
+
+function closeModal(){
+  document.getElementById('modal').classList.remove('open');
+}
+
+document.getElementById('modal').addEventListener('click',function(e){
+  if(e.target===this) closeModal();
+});
+
+// =====================
+// EQUIPO
+// =====================
+
+const team = [
+  {
+    id: 'esau',
+    name: 'Esaú',
+    role: 'Marketing — Estrategia & Paid Media',
+    color: '#e8341a',
+    initials: 'ES',
+    groups: [
+      { date: 'Ahora — Abril', title: 'Planeación', tasks: [
+        'Confirmar fechas de drops con Gabriel y Orlando',
+        'Armar brief de El Reto Insano',
+        'Configurar cupones únicos en Shopify para TFW',
+        'Preparar QR codes para el stand',
+        'Definir pitch de colaboradores (2 min)',
+        'Armar formulario de registro de colaboradores',
+      ]},
+      { date: '22 Abril', title: 'Inicio hype TFW', tasks: [
+        'Coordinar a atletas para que suban story con tag TFW',
+        'Lanzar dinámica de registro para El Reto Insano',
+        'Activar campaña Meta de awareness TFW',
+      ]},
+      { date: '1 Mayo', title: 'Drop 1 — Retro', tasks: [
+        'Lanzar Drop en Shopify',
+        'Activar campaña Meta con creativo de Gabriel',
+        'Enviar email a toda la lista',
+      ]},
+      { date: '2–3 Mayo', title: 'TFW en evento', tasks: [
+        'Supervisar captura de emails en stand',
+        'Coordinar reclutamiento de colaboradores',
+        'Monitorear QR y tráfico a Shopify en tiempo real',
+      ]},
+      { date: '4–11 Mayo', title: 'Secuencia email post-TFW', tasks: [
+        'Enviar Email 1 — Gracias + cupón (día 4)',
+        'Enviar Email 2 — recordatorio + Drop 2 (día 7)',
+        'Enviar Email 3 — último aviso cupón (día 11)',
+      ]},
+      { date: '5 Mayo', title: 'Drop 2 — Best Sellers', tasks: [
+        'Lanzar Drop 2 en Shopify',
+        'Activar Meta con creativos de atletas',
+        'Onboarding formal de colaboradores reclutados en TFW',
+      ]},
+      { date: '12–15 Mayo', title: 'Calentamiento Hot Sale', tasks: [
+        'Email teaser Hot Sale a toda la lista',
+        'Coordinar contenido de calentamiento con Gabriel',
+        'Lanzar Drop 3 Jerseys si aplica (día 15)',
+      ]},
+      { date: '20 Mayo', title: 'Email VIP', tasks: [
+        'Segmentar lista de clientes previos en Klaviyo',
+        'Enviar acceso anticipado 24h al Hot Sale',
+      ]},
+      { date: '25–29 Mayo', title: 'Hot Sale', tasks: [
+        'Activar descuentos en Shopify',
+        'Subir presupuesto Meta — escalar creativos ganadores',
+        'Monitorear conversión diaria y ajustar',
+        'Enviar email de urgencia día 28',
+        'Desactivar descuentos a medianoche del 29',
+      ]},
+      { date: '8 Junio', title: 'Análisis', tasks: [
+        'Revisar ventas por período — TFW, drops, Hot Sale',
+        'Qué creativos funcionaron mejor en Meta',
+        'Qué emails tuvieron mejor apertura',
+        'Aprendizajes para Buen Fin',
+      ]},
+    ]
+  },
+  {
+    id: 'gabriel',
+    name: 'Gabriel',
+    role: 'CEO & Cara de la marca',
+    color: '#7c6fcd',
+    initials: 'GA',
+    groups: [
+      { date: 'Ahora — Abril', title: 'Contenido previo', tasks: [
+        'Video crudo entrenando — "en X días estamos en TFW"',
+        'Video corto contando la historia del Drop Retro',
+        'Confirmar fechas y drops con el equipo',
+      ]},
+      { date: '24 Abril', title: 'El Reto Insano', tasks: [
+        'Definir el reto físico (dominadas, peso muerto, etc.)',
+        'Aparecer en el anuncio oficial del reto en stories',
+      ]},
+      { date: '1 Mayo', title: 'Drop 1 — Retro', tasks: [
+        'Video crudo: "ya salió el drop, aquí el link"',
+        'Story con cuenta regresiva subida',
+      ]},
+      { date: '2–3 Mayo', title: 'TFW en evento', tasks: [
+        'Presente en el stand ambos días',
+        'Live desde el stand Día 1 — 15-20 min',
+        'Juez de El Reto Insano',
+        'Anunciar ganador del Reto el Día 2',
+        'Fotos con asistentes — genera fila orgánica',
+      ]},
+      { date: '4 Mayo', title: 'Post-evento', tasks: [
+        'Story agradeciendo a los que estuvieron en TFW',
+        'Compartir clips del evento en stories',
+      ]},
+      { date: '5 Mayo', title: 'Drop 2', tasks: [
+        'Video: "ya lo conoces, ahora viene mejor"',
+      ]},
+      { date: '12 Mayo', title: 'Teaser Hot Sale', tasks: [
+        '"Algo grande viene el 25 de mayo" — story',
+        'Cuenta regresiva en stories',
+      ]},
+      { date: '25 Mayo', title: 'Hot Sale Día 1', tasks: [
+        'Video crudo ese mismo día — "hoy es el día, aquí el link"',
+        'Story de cierre el 29 agradeciendo',
+      ]},
+    ]
+  },
+  {
+    id: 'orlando',
+    name: 'Orlando',
+    role: 'Manufactura & Diseño',
+    color: '#1d9e75',
+    initials: 'OR',
+    groups: [
+      { date: 'Antes del 25 Abril', title: 'Drop 1 — Retro', tasks: [
+        '✓ Entregar ficha técnica: tipo de prenda, colores, tallas disponibles',
+        '✓ Fotos del producto — fondo blanco + lifestyle (nombrar igual que la referencia)',
+        '✓ Confirmar cantidad de piezas por talla',
+        '✓ Fecha de entrega confirmada antes del 1 de Mayo',
+      ]},
+      { date: 'Antes del 1 Mayo', title: 'Drop 2 — Best Sellers Renovados', tasks: [
+        '✓ Entregar ficha técnica de cada best seller renovado',
+        '✓ Fotos actualizadas del producto',
+        '✓ Qué cambió respecto a la versión anterior (color, material, corte)',
+        '✓ Stock disponible por talla',
+      ]},
+      { date: 'Antes del 8 Mayo', title: 'Drop 3 — Jerseys (opcional)', tasks: [
+        '✓ Entregar ficha técnica jerseys',
+        '✓ Fotos producto',
+        '✓ Número exacto de piezas — edición limitada',
+        '✓ Confirmar si se puede producir a tiempo',
+      ]},
+      { date: 'Proceso general', title: 'Checklist entrega por drop', tasks: [
+        'Nombre de la prenda',
+        'Tipo de prenda (pants, top, jersey, etc.)',
+        'Colores disponibles (nombre + código hex o Pantone)',
+        'Tallas disponibles (XS/S/M/L/XL/XXL)',
+        'Cantidad por talla',
+        'Precio de costo',
+        'Fotos en carpeta Drive — nombradas igual que la referencia',
+        'Fecha de entrega a fulfillment (Angie)',
+      ]},
+    ]
+  },
+  {
+    id: 'primo',
+    name: 'Primo',
+    role: 'Marketing — Co-ejecución',
+    color: '#ba7517',
+    initials: 'PR',
+    groups: [
+      { date: 'Ahora — Abril', title: 'Producción previa', tasks: [
+        'Coordinar grabación del podcast con Gabriel',
+        'Grabar serie de contenido diario de entrenamiento con Gabriel',
+        'Editar creativos para campañas Meta Drop 1',
+      ]},
+      { date: '2–3 Mayo', title: 'TFW — Producción en evento', tasks: [
+        'Grabar todo en el stand — ambiente, gente, El Reto',
+        'Grabar el momento del ganador del Reto (producción decente)',
+        'Grabar el live de Gabriel como respaldo',
+      ]},
+      { date: '4–7 Mayo', title: 'Post-TFW contenido', tasks: [
+        'Editar y publicar clips del evento esa semana',
+        'Armar creativo para Drop 2 con material del evento',
+        'Editar clips del Reto Insano para reels',
+      ]},
+      { date: 'Mayo continuo', title: 'Creativos Meta', tasks: [
+        'Mantener creativos frescos para cada drop',
+        'A/B testing de formatos — raw vs editado',
+        'Editar contenido de colaboradores para amplificar',
+      ]},
+      { date: '25–29 Mayo', title: 'Hot Sale', tasks: [
+        'Editar video de Gabriel el Día 1 y publicar rápido',
+        'Crear stories de urgencia con contador de stock',
+        'Amplificar contenido de colaboradores durante Hot Sale',
+      ]},
+    ]
+  },
+];
+
+// State: done tasks per member
+const doneState = {};
+const customTasks = {};
+team.forEach(m => { doneState[m.id] = {}; customTasks[m.id] = []; });
+
+function renderTeam(activeId) {
+  const container = document.getElementById('team-container');
+
+  // Tabs
+  let tabsHtml = '<div class="team-tabs">';
+  team.forEach(m => {
+    tabsHtml += `<button class="team-tab${m.id===activeId?' active':''}" onclick="renderTeam('${m.id}')">${m.name}</button>`;
+  });
+  tabsHtml += '</div>';
+
+  const member = team.find(m => m.id === activeId);
+
+  // Count tasks for progress
+  let total = 0, done = 0;
+  member.groups.forEach(g => {
+    g.tasks.forEach((t,i) => {
+      total++;
+      if(doneState[activeId][g.title+i]) done++;
+    });
+  });
+  customTasks[activeId].forEach((t,i) => {
+    total++;
+    if(doneState[activeId]['custom'+i]) done++;
+  });
+  const pct = total ? Math.round((done/total)*100) : 0;
+
+  let html = tabsHtml;
+  html += `<div class="team-member active">`;
+  html += `<div class="member-header">
+    <div class="member-avatar" style="background:${member.color}22;color:${member.color};">${member.initials}</div>
+    <div>
+      <div class="member-name">${member.name}</div>
+      <div class="member-role">${member.role}</div>
+    </div>
+  </div>`;
+
+  html += `<div class="progress-label">${done} de ${total} tareas completadas — ${pct}%</div>`;
+  html += `<div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:${pct}%;background:${member.color};"></div></div>`;
+
+  member.groups.forEach(g => {
+    html += `<div class="task-group">`;
+    html += `<div class="task-group-date">${g.date}</div>`;
+    html += `<div class="task-group-title">${g.title}</div>`;
+    g.tasks.forEach((t,i) => {
+      const key = g.title+i;
+      const isDone = !!doneState[activeId][key];
+      html += `<div class="team-task${isDone?' done':''}" onclick="toggleTask('${activeId}','${key}',this)">
+        <div class="task-check">${isDone?'✓':''}</div>
+        <div class="task-text">${t}</div>
+      </div>`;
+    });
+    html += `</div>`;
+  });
+
+  // Custom tasks
+  if(customTasks[activeId].length > 0) {
+    html += `<div class="task-group"><div class="task-group-date">Agregadas</div><div class="task-group-title">Tareas adicionales</div>`;
+    customTasks[activeId].forEach((t,i) => {
+      const key = 'custom'+i;
+      const isDone = !!doneState[activeId][key];
+      html += `<div class="team-task${isDone?' done':''}" onclick="toggleTask('${activeId}','${key}',this)">
+        <div class="task-check">${isDone?'✓':''}</div>
+        <div class="task-text">${t}</div>
+      </div>`;
+    });
+    html += `</div>`;
+  }
+
+  // Add task
+  html += `<div class="add-task-row">
+    <input class="add-task-input" id="new-task-input" placeholder="Agregar tarea para ${member.name}..." onkeydown="if(event.key==='Enter') addTask('${activeId}')">
+    <button class="add-task-btn" onclick="addTask('${activeId}')">+ Agregar</button>
+  </div>`;
+
+  html += `</div>`;
+  container.innerHTML = html;
+}
+
+function toggleTask(memberId, key, el) {
+  doneState[memberId][key] = !doneState[memberId][key];
+  const isDone = doneState[memberId][key];
+  el.classList.toggle('done', isDone);
+  el.querySelector('.task-check').textContent = isDone ? '✓' : '';
+  // Update progress
+  const member = team.find(m => m.id === memberId);
+  let total = 0, done = 0;
+  member.groups.forEach(g => {
+    g.tasks.forEach((t,i) => { total++; if(doneState[memberId][g.title+i]) done++; });
+  });
+  customTasks[memberId].forEach((t,i) => { total++; if(doneState[memberId]['custom'+i]) done++; });
+  const pct = total ? Math.round((done/total)*100) : 0;
+  const bar = document.querySelector('.progress-bar-fill');
+  const label = document.querySelector('.progress-label');
+  if(bar) { bar.style.width = pct+'%'; }
+  if(label) label.textContent = `${done} de ${total} tareas completadas — ${pct}%`;
+}
+
+function addTask(memberId) {
+  const input = document.getElementById('new-task-input');
+  const val = input.value.trim();
+  if(!val) return;
+  customTasks[memberId].push(val);
+  input.value = '';
+  renderTeam(memberId);
+}
+
+// Init
+renderTeam('esau');
+</script>
+</body>
+</html>
